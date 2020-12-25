@@ -1,0 +1,717 @@
+Generate test file
+==================
+
+Command to generate the test file:
+
+	ruby gen-lines.rb > lines.txt
+
+Program was CPU bound with ~100% CPU on one core at ~64.5 M/s I/O. Generated 13 GByte for 80 000 000 records (this was
+hardcoded in gen-lines.rb).
+
+Output example lables:
+
+	qt/kTsClqLaEWidlABHJ9mhX
+	09fYQNVcNDgoWz6eT8zrmE4IspuEGr2FluyBt6lIibOXhuDVuEj5xGfxQCZ4rKnuBi14KLDpW5f2ijgdPADcwH7NGx+xNHyjoGzlH35pM0+t0FXUpqONJwPZVJBPpDTrc21iY485Ru6vALmCX6UJeohRFmUraycOghE8KMfM9lG2eqMdwA==
+	crz5foFcxohN1BWjOj2RAAes2xEE+mN3vHxWK7wCqIY02iRd7igDBr86PQyVbSYWYMaK8bJ3ag9+TAXCVlzQzBucdAyapgJpt/NCRsd+5mHeLb9xNVDBPKlixpee3MI9/BemfgVXsCiZg7NS/Jlh9ZvBE0Mudm6mza8Vs9Ei
+	7EcY37ojTX/VYcqXczkUQkT6Y5idUppZPHwYrGXpAg==
+	lJvPSYdcr0Cll0MjHfs3AG9L1Pm7NjRffmdUGabVh4VhUGDfISeaEk2zgSJFolPZ91T4P9aWxdGzt++AfwBSqgBK2ugepGBmfxDN1cZa9GwaoWnI7J+o8/UNPNpD56jRCEN0agOLtRW3X1t1
+	HhwRnJSu9nOOnbw1Xy3GkqnvZdJbUiEGuDjtZfDPOaGQqXhPJs4MxOmS1hx+3RMZd+KTewshRB7FuxGstZ686bilHnaGqBNUo9jYyqXwCKpjYfROsZ5Y9SQsHtN4WrPV/nFmlGByNlirQRuinL3TurcIvmlSA+VTQQ==
+	18iSULQe3vfRpvtICoLykkRE1IeHpZlFtJGg0aAUrJlqZy5m876ZCYAaBYDGhvnTAQG7KURm52xrhUeeIh2LFA==
+	vF2vGdl4dpUOoRYcFCTnJA==
+	WBGUAsRbkrvVdI4Y7mIaBOIRHeJ2kb3e2W8e/lUJxwtjxl4oazLribns7hpGJxf0hLy/DEt5u3k2
+	ZSmhXQy52xukWu4hNt8pAhFxFrcXw6CuyM4sndu2QQw5VUh/82o7tvrDi24P8UF0nv2RZsEGgpReRMmIKiGU
+	Wb7s/VdAweP0HQxO3AOLdgBUvEugVeNA8KgwgPUSgAsIQ1ClGjNqA0PcpfmmW5pJn+NwuT6l9hEUz/J9z9vD2CLqB/7rimpntu/RgOoswgt31fvVgqA=
+	lwDBv3LKYY5RVdukpzCWZxeIR+Nk37IcPul+JnaYNyN11J8K/AYp6Lh6e/TsdL+ULSTQpO1OtEhaeYkHhupQOuPrLvbWtVFy3LnWty6lcHC0RxbHss9J
+	s5izmtPt7DUHBNblbsZarr/N8D4oEd6Rj/G2P8PQUrrx0ViCShOSWR/VFOP/uNnaafP7ZNAbHSQB7MUpmRO/KsaBSw==
+	r4Ny0839kW80oL3zlvYQzRLhlF22ZS+Sr1LdQrzISaVeCaHDExWQ44/D7KwClYT63+YzQi0LDFRB1eN7kXWdaeVYEfUemzIwLam+EAZR1bwFKW/4NOqXU6Odagll/CuJSoIOocO/ELXQxR2fLF1MpxoMjqxNVIZa
+	i1SxuznGJWIi4UvL73bVR1I0e36eGAuupY87BWj3FNQDA/yNnhXZ0ybBn4H2OtyJrJLPvNgFzRHlXuA2duevaVS7fF5vovBPVC9zJpb0ycLeROzIJg2aQTcdHfczfyuzpCcVHjEPD325B2hxeVBXnJbFRdcSjvwl
+	Bk+kec21DbBfEJyaSIPs2MtPNSKSpJ86mOaaRLoQKRYrJt759rx3guzvmfuDjaiXNURvCk03pU5WOzXf8h7G6GDmgu05SbsoPXSzkfhowTbEZKGyCcSQnNRT1Vt3Gcyz7KmCuBypOqizztQy
+
+
+First manual `grep` run
+=======================
+
+Just to get a feel for the speed:
+
+	/usr/bin/time --verbose grep 'vF2vGdl4dpUOoRYcFCTnJA==' lines.txt
+
+Program maxed out at disk I/O speed of ~103 MB/s with ~13% CPU load.
+
+	http://mediagraph.link/vndb/53683437/wBlpgFMnkYu7YbiYMNJwdLiz8A==	vF2vGdl4dpUOoRYcFCTnJA==
+		Command being timed: "grep vF2vGdl4dpUOoRYcFCTnJA== lines.txt"
+		User time (seconds): 6.32
+		System time (seconds): 6.37
+		Percent of CPU this job got: 12%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 1:40.70
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 2752
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 118
+		Voluntary context switches: 83457
+		Involuntary context switches: 1279
+		Swaps: 0
+		File system inputs: 21354784
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+So it's completely I/O bound. Big surprise.
+
+
+Repeated test for 5 million labels
+==================================
+
+The database contains 5 million lables instead of 80 million. Let's see how well that works.
+
+Generate test file (line count is now a command line argument):
+
+	ruby gen-lines.rb 5000000 > lines.txt
+
+Took about 12s for 808,9MB of data. Output of example labels:
+
+	ZsikmpRworknWhIN/9YbQuMigRVs8+lJ6v3HnkE=
+	p1zQnVOWt46vdkeA11vNBzRt4iBpzNtuHDbz2NScd9l/fCW2iKMb7UF1kUjZqAJMR1x2lQ70DMOynlwUwV0FkbI=
+	hGyaC0PXhM0/GWhbbTP5vBjYJ5UuHxXxRgtUj+CCCadszSGbg2MR1pCEIT+3YDrttx+goFA5izbNyjtkbFL0oaICaiJX
+	WG/z8/a5yEC0uvh6Ntdw9W678iHZgwNkEGUX6oQahJnNl+On+JXSwAyv4crTDuaVsubZCH8Kuzbf6jsWvrC70JhEEzKroLt1lHnPLjme3iZLTAEMCLgMbyGi3BGYl7/ywB3g48L+YroaWIuCNSMm
+	ocssud7cTknS7Dtw8RW4Wh7/re45r2m4XuRn8uX/d45wYXD5EKXN/hA4RHhGZvjNuM+1ljQbEMQ/hW37AqIPVBHqCv+EkvawgYfQNzNQyc18RhWH3w==
+	2fLaI0EQ9pi7oaEW7gp+VNLhAlPz/A==
+	/6EH5uWurSalIb4oP6aKS2bI/pzd4d8kKCigDSz/DaMo3RffA71d23Y=
+	xscX5nz0eYLECC2bkc/nVVAw8FNsW3HTdwT+3XsW/kV6iLA9zuKmwSL0JPpZgbIxycxX61VRZAsbg+Fs
+	AZ2fPMlz1jCPtlnrjcvS9FSUz6k=
+	2TxHR/60CTRaH+PSETSbJi/ThcKcxTJtsjqwegCtmPBFVrzErCsLvzE/5i1tnc5jek+SO/b/4SxTO10tHXDsn+ipmfyxOap7afAIrG/9gFQPVXEm+MD1++pguNiwF3CgUqoCRgbE
+	grXm9DTdfi1d6a9B00AbHg/87wxb8EanICVJJUoTPe7+MVDhHRbsvOKyQOX7YrDZNg==
+	KjtumnUZYtr+56rCapI=
+
+First manual `grep` run:
+
+	/usr/bin/time --verbose grep '2fLaI0EQ9pi7oaEW7gp+VNLhAlPz/A==' lines.txt
+
+Measured details with `bench-grep.sh`. Detailed search commands in shell script:
+
+	bench_cmd 'grep KjtumnUZYtr+56rCapI= lines.txt' "test-02-short.csv"
+	bench_cmd 'grep /6EH5uWurSalIb4oP6aKS2bI/pzd4d8kKCigDSz/DaMo3RffA71d23Y= lines.txt' "test-02-medium.csv"
+	bench_cmd 'grep WG/z8/a5yEC0uvh6Ntdw9W678iHZgwNkEGUX6oQahJnNl+On+JXSwAyv4crTDuaVsubZCH8Kuzbf6jsWvrC70JhEEzKroLt1lHnPLjme3iZLTAEMCLgMbyGi3BGYl7/ywB3g48L+YroaWIuCNSMm lines.txt' "test-02-long.csv"
+
+Results in `test-02-*.csv` files:
+
+	160ms: WG/z8/a5yEC0uvh6Ntdw9W678iHZgwNkEGUX6oQahJnNl+On+JXSwAyv4crTDuaVsubZCH8Kuzbf6jsWvrC70JhEEzKroLt1lHnPLjme3iZLTAEMCLgMbyGi3BGYl7/ywB3g48L+YroaWIuCNSMm
+	190ms: /6EH5uWurSalIb4oP6aKS2bI/pzd4d8kKCigDSz/DaMo3RffA71d23Y=
+	270ms: KjtumnUZYtr+56rCapI=
+
+Bandwidth of above `grep` search: 808 MB ÷ 0,160 s = 5050 MB/s
+
+Rought estimate of the bandwidth of the system itself: 12,8GiB/s (measured with `pv < /dev/zero > /dev/null`).
+
+
+Performance of a small fgets() strstr() C program
+=================================================
+
+Wrote a small C program that reads each line with `fgets()` and then searches in it with `strstr()`. Compiled with -O2.
+
+Measured details with `bench-grep.sh`. Detailed search commands in shell script:
+
+	bench_cmd './fgets-search KjtumnUZYtr+56rCapI= lines.txt' "test-03-short.csv"
+	bench_cmd './fgets-search /6EH5uWurSalIb4oP6aKS2bI/pzd4d8kKCigDSz/DaMo3RffA71d23Y= lines.txt' "test-03-medium.csv"
+	bench_cmd './fgets-search WG/z8/a5yEC0uvh6Ntdw9W678iHZgwNkEGUX6oQahJnNl+On+JXSwAyv4crTDuaVsubZCH8Kuzbf6jsWvrC70JhEEzKroLt1lHnPLjme3iZLTAEMCLgMbyGi3BGYl7/ywB3g48L+YroaWIuCNSMm lines.txt' "test-03-long.csv"
+
+Results in `test-03-*.csv` files:
+
+	440ms: WG/z8/a5yEC0uvh6Ntdw9W678iHZgwNkEGUX6oQahJnNl+On+JXSwAyv4crTDuaVsubZCH8Kuzbf6jsWvrC70JhEEzKroLt1lHnPLjme3iZLTAEMCLgMbyGi3BGYl7/ywB3g48L+YroaWIuCNSMm
+	440ms: /6EH5uWurSalIb4oP6aKS2bI/pzd4d8kKCigDSz/DaMo3RffA71d23Y=
+	440ms: KjtumnUZYtr+56rCapI=
+
+
+Some other commands just for fun
+================================
+
+Found the post https://stackoverflow.com/questions/8481143/find-a-string-in-a-string-using-awk, tried the commands
+listed there:
+
+	$ /usr/bin/time --verbose sed '/KjtumnUZYtr+56rCapI=/!d' lines.txt
+	http://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0	KjtumnUZYtr+56rCapI=
+		Command being timed: "sed /KjtumnUZYtr+56rCapI=/!d lines.txt"
+		User time (seconds): 1.00
+		System time (seconds): 0.11
+		Percent of CPU this job got: 98%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.13
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 2872
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 139
+		Voluntary context switches: 1
+		Involuntary context switches: 452
+		Swaps: 0
+		File system inputs: 0
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+	$ /usr/bin/time --verbose awk '/KjtumnUZYtr\+56rCapI=/' lines.txt
+	http://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0	KjtumnUZYtr+56rCapI=
+		Command being timed: "awk /KjtumnUZYtr\+56rCapI=/ lines.txt"
+		User time (seconds): 2.20
+		System time (seconds): 0.15
+		Percent of CPU this job got: 98%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:02.37
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 4396
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 204
+		Voluntary context switches: 0
+		Involuntary context switches: 978
+		Swaps: 0
+		File system inputs: 0
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+Remembered that `mawk` is a faster (bytecode VM) version of `awk`, so gave it a spin:
+
+	$ /usr/bin/time --verbose mawk '/KjtumnUZYtr\+56rCapI=/' lines.txt
+	http://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0	KjtumnUZYtr+56rCapI=
+		Command being timed: "mawk /KjtumnUZYtr\+56rCapI=/ lines.txt"
+		User time (seconds): 0.74
+		System time (seconds): 0.12
+		Percent of CPU this job got: 98%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.87
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 2020
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 1
+		Minor (reclaiming a frame) page faults: 89
+		Voluntary context switches: 4
+		Involuntary context switches: 225
+		Swaps: 0
+		File system inputs: 248
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+Rewrote the `mawk` version to use simple string search instead of a regexpr. Use the `mawk` man page as a reference:
+https://invisible-island.net/mawk/manpage/mawk.html.
+
+	/usr/bin/time --verbose mawk 'index($2, "KjtumnUZYtr+56rCapI=")' lines.txt
+	http://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0	KjtumnUZYtr+56rCapI=
+		Command being timed: "mawk index($2, "KjtumnUZYtr+56rCapI=") lines.txt"
+		User time (seconds): 1.32
+		System time (seconds): 0.18
+		Percent of CPU this job got: 98%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.52
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 2140
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 90
+		Voluntary context switches: 1
+		Involuntary context switches: 598
+		Swaps: 0
+		File system inputs: 0
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+
+C program optimizations: Simple straight-forward implementation of `str_contains()`
+===================================================================================
+
+	$ gcc -std=c99 -Wall -Wextra -O2 fgets-search-opt1.c -o fgets-search-opt1
+	$ /usr/bin/time --verbose ./fgets-search-opt1 KjtumnUZYtr+56rCapI= lines.txt
+	http://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0	KjtumnUZYtr+56rCapI=
+		Command being timed: "./fgets-search-opt1 KjtumnUZYtr+56rCapI= lines.txt"
+		User time (seconds): 1.01
+		System time (seconds): 0.14
+		Percent of CPU this job got: 99%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.16
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 1416
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 60
+		Voluntary context switches: 1
+		Involuntary context switches: 480
+		Swaps: 0
+		File system inputs: 0
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+
+
+C program optimizations: mmapping file and early exit optimization
+==================================================================
+
+Used `mmap()` to iterate over line breaks and added a check to skip the rest of the line. Is broken and doesn't find the
+match but to slow to bother fixing it:
+
+	$ gcc -std=c99 -Wall -Wextra -O2 fgets-search-opt2.c -o fgets-search-opt2
+	$ /usr/bin/time --verbose ./fgets-search-opt2 KjtumnUZYtr+56rCapI= lines.txt
+		Command being timed: "./fgets-search-opt2 KjtumnUZYtr+56rCapI= lines.txt"
+		User time (seconds): 0.89
+		System time (seconds): 0.04
+		Percent of CPU this job got: 99%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.95
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 790412
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 12402
+		Voluntary context switches: 1
+		Involuntary context switches: 302
+		Swaps: 0
+		File system inputs: 0
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+	$ /usr/bin/time --verbose ./fgets-search-opt2 WG/z8/a5yEC0uvh6Ntdw9W678iHZgwNkEGUX6oQahJnNl+On+JXSwAyv4crTDuaVsubZCH8Kuzbf6jsWvrC70JhEEzKroLt1lHnPLjme3iZLTAEMCLgMbyGi3BGYl7/ywB3g48L+YroaWIuCNSMm lines.txt
+		Command being timed: "./fgets-search-opt2 WG/z8/a5yEC0uvh6Ntdw9W678iHZgwNkEGUX6oQahJnNl+On+JXSwAyv4crTDuaVsubZCH8Kuzbf6jsWvrC70JhEEzKroLt1lHnPLjme3iZLTAEMCLgMbyGi3BGYl7/ywB3g48L+YroaWIuCNSMm lines.txt"
+		User time (seconds): 0.37
+		System time (seconds): 0.03
+		Percent of CPU this job got: 100%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.41
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 790400
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 12401
+		Voluntary context switches: 1
+		Involuntary context switches: 62
+		Swaps: 0
+		File system inputs: 0
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+
+C program optimizations: Searching all data with consecutive `strstr()` calls
+=============================================================================
+
+`mmap()`ed the entire file, then searched for string by consecutive `strstr()` calls. No line iteration, no early exit
+optimization to complicate the code. All time is spend in `strstr()`.
+
+	$ gcc -std=c99 -Wall -Wextra -O2 fgets-search-opt3.c -o fgets-search-opt3
+	$ /usr/bin/time --verbose ./fgets-search-opt3 KjtumnUZYtr+56rCapI= lines.txt
+	http://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0	KjtumnUZYtr+56rCapI=
+		Command being timed: "./fgets-search-opt3 KjtumnUZYtr+56rCapI= lines.txt"
+		User time (seconds): 0.06
+		System time (seconds): 0.04
+		Percent of CPU this job got: 99%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.10
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 790260
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 12406
+		Voluntary context switches: 1
+		Involuntary context switches: 30
+		Swaps: 0
+		File system inputs: 0
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+Measured details with `bench-grep.sh`. Detailed search commands in shell script:
+
+	bench_cmd './fgets-search-opt3 KjtumnUZYtr+56rCapI= lines.txt' "test-04-short.csv"
+	bench_cmd './fgets-search-opt3 /6EH5uWurSalIb4oP6aKS2bI/pzd4d8kKCigDSz/DaMo3RffA71d23Y= lines.txt' "test-04-medium.csv"
+	bench_cmd './fgets-search-opt3 WG/z8/a5yEC0uvh6Ntdw9W678iHZgwNkEGUX6oQahJnNl+On+JXSwAyv4crTDuaVsubZCH8Kuzbf6jsWvrC70JhEEzKroLt1lHnPLjme3iZLTAEMCLgMbyGi3BGYl7/ywB3g48L+YroaWIuCNSMm lines.txt' "test-04-long.csv"
+
+Results in `test-04-*.csv` files:
+
+	100ms: WG/z8/a5yEC0uvh6Ntdw9W678iHZgwNkEGUX6oQahJnNl+On+JXSwAyv4crTDuaVsubZCH8Kuzbf6jsWvrC70JhEEzKroLt1lHnPLjme3iZLTAEMCLgMbyGi3BGYl7/ywB3g48L+YroaWIuCNSMm
+	100ms: /6EH5uWurSalIb4oP6aKS2bI/pzd4d8kKCigDSz/DaMo3RffA71d23Y=
+	100ms: KjtumnUZYtr+56rCapI=
+
+
+PHP: Search in each line
+========================
+
+	$ /usr/bin/time --verbose php search.php KjtumnUZYtr+56rCapI= lines.txt
+	http://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0    KjtumnUZYtr+56rCapI=
+	        Command being timed: "php search.php KjtumnUZYtr+56rCapI= lines.txt"
+	        User time (seconds): 3.20
+	        System time (seconds): 0.08
+	        Percent of CPU this job got: 99%
+	        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.28
+	        Average shared text size (kbytes): 0
+	        Average unshared data size (kbytes): 0
+	        Average stack size (kbytes): 0
+	        Average total size (kbytes): 0
+	        Maximum resident set size (kbytes): 22180
+	        Average resident set size (kbytes): 0
+	        Major (requiring I/O) page faults: 0
+	        Minor (reclaiming a frame) page faults: 1824
+	        Voluntary context switches: 1
+	        Involuntary context switches: 19
+	        Swaps: 0
+	        File system inputs: 0
+	        File system outputs: 0
+	        Socket messages sent: 0
+	        Socket messages received: 0
+	        Signals delivered: 0
+	        Page size (bytes): 4096
+	        Exit status: 0
+
+
+PHP: Search in entire file
+==========================
+
+Here we rely on the fact that `file_get_contents()` uses `mmap()` and gives us a string without loading the entire file
+first. This breaks apart if the file doesn't easily fit into the page cache.
+
+	$ /usr/bin/time --verbose php search2.php KjtumnUZYtr+56rCapI= lines.txt
+	http://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0    KjtumnUZYtr+56rCapI=
+	        Command being timed: "php search2.php KjtumnUZYtr+56rCapI= lines.txt"
+	        User time (seconds): 0.50
+	        System time (seconds): 0.35
+	        Percent of CPU this job got: 99%
+	        Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.86
+	        Average shared text size (kbytes): 0
+	        Average unshared data size (kbytes): 0
+	        Average stack size (kbytes): 0
+	        Average total size (kbytes): 0
+	        Maximum resident set size (kbytes): 1311484
+	        Average resident set size (kbytes): 0
+	        Major (requiring I/O) page faults: 0
+	        Minor (reclaiming a frame) page faults: 324174
+	        Voluntary context switches: 1
+	        Involuntary context switches: 4
+	        Swaps: 0
+	        File system inputs: 32
+	        File system outputs: 0
+	        Socket messages sent: 0
+	        Socket messages received: 0
+	        Signals delivered: 0
+	        Page size (bytes): 4096
+	        Exit status: 0
+
+
+Python: Search in each line
+===========================
+
+	$ /usr/bin/time --verbose python3.8 search.py KjtumnUZYtr+56rCapI= lines.txt
+	http://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0	KjtumnUZYtr+56rCapI=
+	
+		Command being timed: "python3.8 search.py KjtumnUZYtr+56rCapI= lines.txt"
+		User time (seconds): 1.67
+		System time (seconds): 0.07
+		Percent of CPU this job got: 99%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.75
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 8868
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 953
+		Voluntary context switches: 1
+		Involuntary context switches: 6
+		Swaps: 0
+		File system inputs: 0
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+
+Python: Search in each line of mmaped file
+==========================================
+
+	$ /usr/bin/time --verbose python3.8 search1.5.py KjtumnUZYtr+56rCapI= lines.txt
+	b'http://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0\tKjtumnUZYtr+56rCapI=\n'
+		Command being timed: "python3.8 search1.5.py KjtumnUZYtr+56rCapI= lines.txt"
+		User time (seconds): 1.20
+		System time (seconds): 0.04
+		Percent of CPU this job got: 100%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:01.25
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 798284
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 13298
+		Voluntary context switches: 1
+		Involuntary context switches: 2
+		Swaps: 0
+		File system inputs: 0
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+
+Python: Search in entire mmaped file
+====================================
+
+	$ /usr/bin/time --verbose python3.8 search2.py KjtumnUZYtr+56rCapI= lines.txt
+	b'\nhttp://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0\tKjtumnUZYtr+56rCapI='
+		Command being timed: "python3.8 search2.py KjtumnUZYtr+56rCapI= lines.txt"
+		User time (seconds): 0.95
+		System time (seconds): 0.02
+		Percent of CPU this job got: 100%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.97
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 798304
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 13302
+		Voluntary context switches: 1
+		Involuntary context switches: 2
+		Swaps: 0
+		File system inputs: 0
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+
+C: Multithreaded search with inserted zero-terminators
+======================================================
+
+`strstr()` only works on zero-terminated strings. Hence the string of each worker needs to be zero-terminated. Thus we
+replace the line breaks at the end of each worker string with a zero-terminator. For the last slice we write over the
+end of the mmaped memory area.
+
+Placing the zero-terminators requires an read-write private mapping (write because we change some bytes, private because
+we don't want to change the underlying file). This thoroughly trashes performance in the kernel (see "System time"
+below).
+
+Also the last slice causes a segmentation fault (11 = SIGSEGV). Didn't bother to fix it since this approach is to slow.
+
+	$ /usr/bin/time --verbose ./search-parallel KjtumnUZYtr+56rCapI= lines.txt 8
+	slice 0x7fa74aad6000 - 0x7fa750b4443e, 101114942 bytes
+	slice 0x7fa750b4443f - 0x7fa756bb2867, 101114920 bytes
+	worker 7FA74AAD5700 slice 0x7fa74aad6000 - 0x7fa750b4443e (101114942 bytes)
+	slice 0x7fa756bb2868 - 0x7fa75cc20c7d, 101114901 bytes
+	worker 7FA74A2D4700 slice 0x7fa750b4443f - 0x7fa756bb2867 (101114920 bytes)
+	worker 7FA749AD3700 slice 0x7fa756bb2868 - 0x7fa75cc20c7d (101114901 bytes)
+	slice 0x7fa75cc20c7e - 0x7fa762c8f0f1, 101114995 bytes
+	slice 0x7fa762c8f0f2 - 0x7fa768cfd559, 101114983 bytes
+	worker 7FA7492D2700 slice 0x7fa75cc20c7e - 0x7fa762c8f0f1 (101114995 bytes)
+	slice 0x7fa768cfd55a - 0x7fa76ed6b9b1, 101114967 bytes
+	worker 7FA748AD1700 slice 0x7fa762c8f0f2 - 0x7fa768cfd559 (101114983 bytes)
+	slice 0x7fa76ed6b9b2 - 0x7fa774dd9e35, 101115011 bytes
+	worker 7FA7482D0700 slice 0x7fa768cfd55a - 0x7fa76ed6b9b1 (101114967 bytes)
+	Command terminated by signal 11
+		Command being timed: "./search-parallel KjtumnUZYtr+56rCapI= lines.txt 8"
+		User time (seconds): 0.01
+		System time (seconds): 0.58
+		Percent of CPU this job got: 95%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.62
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 791672
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 12434
+		Voluntary context switches: 31
+		Involuntary context switches: 2
+		Swaps: 0
+		File system inputs: 0
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+
+C: Multithreaded search with one mapping per thread
+===================================================
+
+Idea to solve the problems of the previous version: Create a mmap for each worker thread that only maps the offset and
+length of this workers slice. Then hope that the kernel will fill the rest of the last page with zeros so we get a
+zero-terminator.
+
+Problem with the offset: We can only use offsets that are multiples of the page size. Meaning the kernel won't shift the
+file data for us by a few bytes. It only moves entire aligned pages from the file into memory. Makes sense to keep the
+kernel code fast and simple. Worked around that by always mapping the file from the start and use a start offset for the
+search.
+
+Problem with the mapping length: The kernel doesn't zero out the remaining bytes of the last page. Instead the last page
+is just as it is in the file. This probably breaks the zero terminators. If the next page after the memory map is a
+zero-page it kind of works out… but this is very fishy.
+
+All in all ok for rough performance tests but not for properly working code. Tested with 2, 4 and 8 threads.
+
+	$ gcc -std=c99 -pthread -Wall -Wextra -O2 search-parallel2.c -o search-parallel2
+
+	$ /usr/bin/time --verbose ./search-parallel2 KjtumnUZYtr+56rCapI= lines.txt 2
+	slice 0x7f289bd55000 - 0x7f28b3f0e007, 404459527 bytes, map 0x7f2883b9b000 404459527 bytes
+	slice 0x7f28b3f0e008 - 0x7f28cc0c8038, 404463664 bytes, map 0x7f2853026000 808923192 bytes
+	worker 7F2883B9A700 slice 0x7f2883b9b000 - 0x7f289bd54007 (404459527 bytes)
+	worker 7F2853025700 slice 0x7f286b1df008 - 0x7f2883399038 (404463664 bytes)
+	worker 7F2853025700 at 0x7f28717dddf7: http://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0	KjtumnUZYtr+56rCapI=
+	worker 7F2883B9A700 at 0x7f28ba50cdf7: http://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0	KjtumnUZYtr+56rCapI=
+		Command being timed: "./search-parallel2 KjtumnUZYtr+56rCapI= lines.txt 2"
+		User time (seconds): 0.16
+		System time (seconds): 0.06
+		Percent of CPU this job got: 134%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.17
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 1580812
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 24765
+		Voluntary context switches: 2
+		Involuntary context switches: 0
+		Swaps: 0
+		File system inputs: 0
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+	$ /usr/bin/time --verbose ./search-parallel2 KjtumnUZYtr+56rCapI= lines.txt 4
+	slice 0x7ff7f81ed000 - 0x7ff8042c9867, 202229863 bytes, map 0x7ff7ec110000 202229863 bytes
+	slice 0x7ff8042c9868 - 0x7ff8103a60f1, 202229897 bytes, map 0x7ff7d3755000 404459761 bytes
+	worker 7FF7EC10F700 slice 0x7ff7ec110000 - 0x7ff7f81ec867 (202229863 bytes)
+	slice 0x7ff8103a60f2 - 0x7ff81c482943, 202229841 bytes, map 0x7ff7aecbe000 606689603 bytes
+	worker 7FF7D3754700 slice 0x7ff7df831868 - 0x7ff7eb90e0f1 (202229897 bytes)
+	slice 0x7ff81c482944 - 0x7ff828560038, 202233588 bytes, map 0x7ff77e149000 808923192 bytes
+	worker 7FF7AECBD700 slice 0x7ff7c6e770f2 - 0x7ff7d2f53943 (202229841 bytes)
+	worker 7FF77E148700 slice 0x7ff7a23de944 - 0x7ff7ae4bc038 (202233588 bytes)
+	worker 7FF7AECBD700 at 0x7ff7cd475df7: http://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0	KjtumnUZYtr+56rCapI=
+	Command terminated by signal 11
+		Command being timed: "./search-parallel2 KjtumnUZYtr+56rCapI= lines.txt 4"
+		User time (seconds): 0.16
+		System time (seconds): 0.05
+		Percent of CPU this job got: 204%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.10
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 792196
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 12429
+		Voluntary context switches: 11
+		Involuntary context switches: 0
+		Swaps: 0
+		File system inputs: 0
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
+
+	$ /usr/bin/time --verbose ./search-parallel2 KjtumnUZYtr+56rCapI= lines.txt 8
+	slice 0x7fc01bb4e000 - 0x7fc021bbc43e, 101114942 bytes, map 0x7fc015adf000 101114942 bytes
+	slice 0x7fc021bbc43f - 0x7fc027c2a867, 101114920 bytes, map 0x7fc009201000 202229863 bytes
+	worker 7FC015ADE700 slice 0x7fc015adf000 - 0x7fc01bb4d43e (101114942 bytes)
+	worker 7FC009200700 slice 0x7fc00f26f43f - 0x7fc0152dd867 (101114920 bytes)
+	slice 0x7fc027c2a868 - 0x7fc02dc98c7d, 101114901 bytes, map 0x7fbff68b5000 303344765 bytes
+	worker 7FBFF68B4700 slice 0x7fc002991868 - 0x7fc0089ffc7d (101114901 bytes)
+	slice 0x7fc02dc98c7e - 0x7fc033d070f1, 101114995 bytes, map 0x7fbfddefa000 404459761 bytes
+	worker 7FBFDDEF9700 slice 0x7fbff0044c7e - 0x7fbff60b30f1 (101114995 bytes)
+	slice 0x7fc033d070f2 - 0x7fc039d75559, 101114983 bytes, map 0x7fbfbf4d1000 505574745 bytes
+	slice 0x7fc039d7555a - 0x7fc03fde39b1, 101114967 bytes, map 0x7fbf9aa3a000 606689713 bytes
+	worker 7FBFBF4D0700 slice 0x7fbfd768a0f2 - 0x7fbfdd6f8559 (101114983 bytes)
+	worker 7FBF9AA39700 slice 0x7fbfb8c6155a - 0x7fbfbeccf9b1 (101114967 bytes)
+	slice 0x7fc03fde39b2 - 0x7fc045e51e35, 101115011 bytes, map 0x7fbf6ff35000 707804725 bytes
+	slice 0x7fc045e51e36 - 0x7fc04bec1038, 101118466 bytes, map 0x7fbf3f3c0000 808923192 bytes
+	worker 7FBF6FF34700 slice 0x7fbf941ca9b2 - 0x7fbf9a238e35 (101115011 bytes)
+	worker 7FBF3F3BF700 slice 0x7fbf696c3e36 - 0x7fbf6f733038 (101118466 bytes)
+	worker 7FBF9AA39700 at 0x7fbfb91f1df7: http://mediagraph.link/vndb/3163706/edWpXAE5tU8UwhABF+dECydUUWtAabWyELiBfJw0	KjtumnUZYtr+56rCapI=
+	Command terminated by signal 11
+		Command being timed: "./search-parallel2 KjtumnUZYtr+56rCapI= lines.txt 8"
+		User time (seconds): 0.23
+		System time (seconds): 0.10
+		Percent of CPU this job got: 281%
+		Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.12
+		Average shared text size (kbytes): 0
+		Average unshared data size (kbytes): 0
+		Average stack size (kbytes): 0
+		Average total size (kbytes): 0
+		Maximum resident set size (kbytes): 752276
+		Average resident set size (kbytes): 0
+		Major (requiring I/O) page faults: 0
+		Minor (reclaiming a frame) page faults: 11815
+		Voluntary context switches: 23
+		Involuntary context switches: 38
+		Swaps: 0
+		File system inputs: 0
+		File system outputs: 0
+		Socket messages sent: 0
+		Socket messages received: 0
+		Signals delivered: 0
+		Page size (bytes): 4096
+		Exit status: 0
