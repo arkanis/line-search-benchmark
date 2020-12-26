@@ -1,4 +1,3 @@
-// Compile with: gcc -std=c99 -pthread -Wall -Wextra -g search-parallel.c -o search-parallel
 #define _GNU_SOURCE  // for memrchr()
 #include <stdio.h>
 #include <stdbool.h>

@@ -10,6 +10,7 @@
 # 
 # The generated lines are always the same since the random number generator is
 # always seeded with the same value.
+require "base64"
 
 abort "usage: ruby gen-lines.rb line-count" unless ARGV.first
 
@@ -19,12 +20,8 @@ sample_label_count = 10
 random = Random.new 1234
 samples = []
 line_count.times do |i|
-  # ID is a random group of 4 byte hex chars separated by "-", e.g. "ec9e-7c1f-1a1f"
-  id = Array.new(random.rand(2..8)){ random.bytes(2).unpack("H*").first }.join("-")
-  # Label is a random group of words, each word a random group of [a-z] chars
-  label = Array.new(random.rand(2..8)) do
-    Array.new(random.rand(3..20)){ random.rand("a".ord.."z".ord).chr }.join("")
-  end.join("_")
+  id    = Base64.strict_encode64(random.bytes(8 + random.rand(24)))
+  label = Base64.strict_encode64(random.bytes(8 + random.rand(128)))
   
   line = "http://example.com/#{i}/#{id}\t#{label}"
   samples << line if random.rand(line_count / sample_label_count) == 1

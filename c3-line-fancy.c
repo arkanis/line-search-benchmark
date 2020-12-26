@@ -1,14 +1,16 @@
-// Compile with: gcc -std=c99 -Wall -Wextra -O2 fgets-search-opt2.c -o fgets-search-opt2
-#include <stdio.h>
+// Purpose: Iterate over lines and search for matches in a way that we can skip the end of the line. If there are not
+// enough chars left for the match we can skip ahead to the next line.
+// mmaping the file also eliminates the need to copy each line into a buffer.
+// This was inspired by greps performance that differs by the length of the search term (longer was faster).
+// Result: Slower than strstr() each line and quite complicated.
 #include <stdbool.h>
-#include <string.h>
-
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <fcntl.h>
 #include <unistd.h>
+#include <sys/stat.h>
+#include <sys/mman.h>
 
 
 int main(int argc, char** argv) {

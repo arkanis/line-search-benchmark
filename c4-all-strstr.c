@@ -1,15 +1,16 @@
-// Compile with: gcc -std=c99 -Wall -Wextra -O2 fgets-search-opt3.c -o fgets-search-opt3
+// Purpose: Thinking the other way around. We search the entire file as one mmaped string with strstr(). When we found
+// a match we search for the start and end of the line to output the matching line.
+// Takes the performance of strstr() and adds as little overheade as possible.
+// Result: Quite fast, even faster than grep.
 #define _GNU_SOURCE  // for memrchr()
-#include <stdio.h>
 #include <stdbool.h>
-#include <string.h>
-
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <fcntl.h>
 #include <unistd.h>
+#include <sys/stat.h>
+#include <sys/mman.h>
 
 
 int main(int argc, char** argv) {

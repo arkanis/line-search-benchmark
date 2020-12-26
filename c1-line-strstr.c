@@ -1,4 +1,3 @@
-// Compile with: gcc -std=c99 -Wall -Wextra -O2 fgets-search.c -o fgets-search
 #include <stdio.h>
 #include <string.h>
 

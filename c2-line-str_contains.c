@@ -1,4 +1,5 @@
-// Compile with: gcc -std=c99 -Wall -Wextra -O2 fgets-search-opt1.c -o fgets-search-opt1
+// Purpose: Try to see if a naive str_contains() is faster than strstr().
+// Result: Nope, not at all. strstr() is very well optimized.
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>

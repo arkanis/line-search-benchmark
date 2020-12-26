@@ -1,16 +1,13 @@
-// Compile with: gcc -std=c99 -pthread -Wall -Wextra -g search-parallel.c -o search-parallel
 #define _GNU_SOURCE  // for memrchr()
-#include <stdio.h>
 #include <stdbool.h>
-#include <string.h>
-
-#include <sys/mman.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <fcntl.h>
 #include <unistd.h>
-#include <pthread.h>
+#include <sys/stat.h>
+#include <sys/mman.h>
+
 
 struct worker_args {
 	const char* search;
