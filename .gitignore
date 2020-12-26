@@ -1,4 +1,9 @@
+# Benchmark binaries, debug stuff and line files
+c?-*
 lines*.txt
+core
+
+# Benchmark results
 bench-*
 *.csv
 *.log

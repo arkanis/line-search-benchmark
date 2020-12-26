@@ -34,10 +34,11 @@ python3.8 --version
 ruby --version
 
 echo -e "\nCompiling c programs:\n"
-make c1-line-strstr c2-line-str_contains c3-line-fancy c4-all-strstr c5-threaded-strstr c6-threaded-mmap-strstr
+make all
 
 echo -e "\nRunning benchmarks:\n"
 printf '%-35s%13s, %8s, %8s\n' "benchmark," "wall time sec" "MiByte/s" "mlines/s" >&2
+
 
 # Not doing the 100k run because it's to fast and we get times below 10ms that /usr/bin/time can't output. This causes
 # division by zero errors in AWK (used in bench_cmd).
@@ -73,6 +74,7 @@ fi
 lines_size=$(stat --printf="%s" lines-1m.txt)
 lines_count=1_000_000
 
+bench_cmd 1  'cat lines-1m.txt > /dev/null'                                                                      1m-00-warmup.csv                   $lines_size $lines_count
 bench_cmd 10 'grep 7Xbs7f0hhn2Alb lines-1m.txt'                                                                  1m-01-grep-short.csv               $lines_size $lines_count
 bench_cmd 10 'grep ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4 lines-1m.txt'                                          1m-02-grep-medium.csv              $lines_size $lines_count
 bench_cmd 10 'grep WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE lines-1m.txt' 1m-03-grep-long.csv                $lines_size $lines_count
@@ -87,20 +89,108 @@ bench_cmd 10 './c4-all-strstr 7Xbs7f0hhn2Alb lines-1m.txt'                      
 bench_cmd 10 './c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 2'                                                1m-12-c5-2threads-strstr.csv       $lines_size $lines_count
 bench_cmd 10 './c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 4'                                                1m-13-c5-4threads-strstr.csv       $lines_size $lines_count
 bench_cmd 10 './c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 8'                                                1m-14-c5-8threads-strstr.csv       $lines_size $lines_count
-bench_cmd 10 './c6-threaded-mmap-strstr 7Xbs7f0hhn2Alb lines-1m.txt 2'                                           1m-15-c6-2threads-mmap-strstr.csv  $lines_size $lines_count
-bench_cmd 10 './c6-threaded-mmap-strstr 7Xbs7f0hhn2Alb lines-1m.txt 4'                                           1m-16-c6-4threads-mmap-strstr.csv  $lines_size $lines_count
-bench_cmd 10 './c6-threaded-mmap-strstr 7Xbs7f0hhn2Alb lines-1m.txt 8'                                           1m-17-c6-8threads-mmap-strstr.csv  $lines_size $lines_count
-bench_cmd 10 'php php1-line-strstr.php 7Xbs7f0hhn2Alb lines-1m.txt'                                              1m-18-php1-line-strstr.csv         $lines_size $lines_count
-bench_cmd 10 'php php2-all-strpos.php 7Xbs7f0hhn2Alb lines-1m.txt'                                               1m-19-php2-all-strpos.csv          $lines_size $lines_count
-bench_cmd 10 'python3.8 py1-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt'                                            1m-20-py1-line-find.csv            $lines_size $lines_count
-bench_cmd 10 'python3.8 py2-mmap-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt'                                       1m-21-py2-mmap-line-find.csv       $lines_size $lines_count
-bench_cmd 10 'python3.8 py3-mmap-all-find.py 7Xbs7f0hhn2Alb lines-1m.txt'                                        1m-22-py3-mmap-all-find.csv        $lines_size $lines_count
-bench_cmd 10 'ruby ruby1-line-include.rb 7Xbs7f0hhn2Alb lines-1m.txt'                                            1m-23-ruby1-line-include.csv       $lines_size $lines_count
-bench_cmd 10 'ruby ruby2-all-index.rb 7Xbs7f0hhn2Alb lines-1m.txt'                                               1m-24-ruby2-all-index.csv          $lines_size $lines_count
+bench_cmd 10 'php php1-line-strstr.php 7Xbs7f0hhn2Alb lines-1m.txt'                                              1m-15-php1-line-strstr.csv         $lines_size $lines_count
+bench_cmd 10 'php php2-all-strpos.php 7Xbs7f0hhn2Alb lines-1m.txt'                                               1m-16-php2-all-strpos.csv          $lines_size $lines_count
+bench_cmd 10 'python3.8 py1-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt'                                            1m-17-py1-line-find.csv            $lines_size $lines_count
+bench_cmd 10 'python3.8 py2-mmap-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt'                                       1m-18-py2-mmap-line-find.csv       $lines_size $lines_count
+bench_cmd 10 'python3.8 py3-mmap-all-find.py 7Xbs7f0hhn2Alb lines-1m.txt'                                        1m-19-py3-mmap-all-find.csv        $lines_size $lines_count
+bench_cmd 10 'ruby ruby1-line-include.rb 7Xbs7f0hhn2Alb lines-1m.txt'                                            1m-20-ruby1-line-include.csv       $lines_size $lines_count
+bench_cmd 10 'ruby ruby2-all-index.rb 7Xbs7f0hhn2Alb lines-1m.txt'                                               1m-21-ruby2-all-index.csv          $lines_size $lines_count
 
 
+if test ! -f lines-10m.txt; then
+	echo "Generating lines-10m.txt..."
+	ruby gen-lines.rb 10_000_000 > lines-10m.txt
+	# sample lines:
+	# http://example.com/3073701/Ybyld6r9vNai95TYXiQH4FuQV+l/CHMwP4i3jQ==	qO76BFQLlj2g
+	# http://example.com/3503259/V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEKAE	j/tkgNV2c+ACibA3tpPgELnHPYT+3O32QLxFiAFdoGUl9xD9hl/0gCMprpGmMJqKFdU7Y0lkgriled853IQ+2Q1Ub3hMA4n8xpS9c+TLNg==
+	# http://example.com/3874850/zjQdPR3iPXe/f28d0x6D2fQONt8x	j5gSmB0dQhRpZ5yjnMBU9la1Dl00wzcD2C7J
+	# http://example.com/4097761/2bKX3FQY+hnG	0k3j5evTu+FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c+3jBoZCuL9k+tvrm178dppX5r7xSyDrAtjWHbtM2DBr1j8C13yYudNbTTEu7LJntONc+SY2Vs2WXBige8yAYRq
+	# http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+	# http://example.com/9674460/OGuKOpNt22+aPUfoW3XTBDOfh/q/lc8ysJpil+M=	WURbI/R069glGkYLjfOizaobX5gJRUjF71pe
+	# short:  VrKDJbjoQ9xnzg  → 4659995
+	# medium: V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEK  → 3503259
+	# long:   FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c  → 4097761
+fi
+lines_size=$(stat --printf="%s" lines-10m.txt)
+lines_count=10_000_000
 
-# 5m   5_000_000   10
-# 10m  10_000_000  5
-# 50m  50_000_000  3
-# 100m 100_000_000 3
+bench_cmd 1  'cat lines-10m.txt > /dev/null'                                                                      10m-00-warmup.csv                   $lines_size $lines_count
+bench_cmd 10 'grep VrKDJbjoQ9xnzg lines-10m.txt'                                                                  10m-01-grep-short.csv               $lines_size $lines_count
+bench_cmd 10 'grep V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEK lines-10m.txt'                                          10m-02-grep-medium.csv              $lines_size $lines_count
+bench_cmd 10 'grep FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c lines-10m.txt'    10m-03-grep-long.csv                $lines_size $lines_count
+bench_cmd 10 'sed /VrKDJbjoQ9xnzg/!d lines-10m.txt'                                                               10m-04-sed.csv                      $lines_size $lines_count
+bench_cmd 10 'awk /VrKDJbjoQ9xnzg/ lines-10m.txt'                                                                 10m-05-awk.csv                      $lines_size $lines_count
+bench_cmd 10 'mawk /VrKDJbjoQ9xnzg/ lines-10m.txt'                                                                10m-06-mawk.csv                     $lines_size $lines_count
+bench_cmd 10 'mawk index($2,"VrKDJbjoQ9xnzg") lines-10m.txt'                                                      10m-07-mawk-index.csv               $lines_size $lines_count
+bench_cmd 10 './c1-line-strstr VrKDJbjoQ9xnzg lines-10m.txt'                                                      10m-08-c1-line-strstr.csv           $lines_size $lines_count
+bench_cmd 10 './c2-line-str_contains VrKDJbjoQ9xnzg lines-10m.txt'                                                10m-09-c2-line-str_contains.csv     $lines_size $lines_count
+bench_cmd 10 './c3-line-fancy VrKDJbjoQ9xnzg lines-10m.txt'                                                       10m-10-c3-line-fancy.csv            $lines_size $lines_count
+bench_cmd 10 './c4-all-strstr VrKDJbjoQ9xnzg lines-10m.txt'                                                       10m-11-c4-all-strstr.csv            $lines_size $lines_count
+bench_cmd 10 './c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 2'                                                10m-12-c5-2threads-strstr.csv       $lines_size $lines_count
+bench_cmd 10 './c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 4'                                                10m-13-c5-4threads-strstr.csv       $lines_size $lines_count
+bench_cmd 10 './c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 8'                                                10m-14-c5-8threads-strstr.csv       $lines_size $lines_count
+bench_cmd 10 'php php1-line-strstr.php VrKDJbjoQ9xnzg lines-10m.txt'                                              10m-15-php1-line-strstr.csv         $lines_size $lines_count
+bench_cmd 10 'php php2-all-strpos.php VrKDJbjoQ9xnzg lines-10m.txt'                                               10m-16-php2-all-strpos.csv          $lines_size $lines_count
+bench_cmd 10 'python3.8 py1-line-find.py VrKDJbjoQ9xnzg lines-10m.txt'                                            10m-17-py1-line-find.csv            $lines_size $lines_count
+bench_cmd 10 'python3.8 py2-mmap-line-find.py VrKDJbjoQ9xnzg lines-10m.txt'                                       10m-18-py2-mmap-line-find.csv       $lines_size $lines_count
+bench_cmd 10 'python3.8 py3-mmap-all-find.py VrKDJbjoQ9xnzg lines-10m.txt'                                        10m-19-py3-mmap-all-find.csv        $lines_size $lines_count
+bench_cmd 10 'ruby ruby1-line-include.rb VrKDJbjoQ9xnzg lines-10m.txt'                                            10m-20-ruby1-line-include.csv       $lines_size $lines_count
+bench_cmd 10 'ruby ruby2-all-index.rb VrKDJbjoQ9xnzg lines-10m.txt'                                               10m-21-ruby2-all-index.csv          $lines_size $lines_count
+
+
+if test ! -f lines-50m.txt; then
+	echo "Generating lines-50m.txt..."
+	ruby gen-lines.rb 50_000_000 > lines-50m.txt
+	# sample lines:
+	# http://example.com/206679/SkdLwsMKrhOQBaLv2JMAXT0=	mY1GI9RXe7Ji756zJy6NdD9o6W9zQ5NNldd9RWb8GyAcDDTLWBezGR/UojrOzFBN91KJHWsf/YXUwfM=
+	# http://example.com/1393684/8Rhk19wcTbgKBdm8AoX7GSCACA==	1Adq1marurr829GlT52/cWR6XnpgPgGe7FVgeIoEH3pYU2WxpWfVk77OZrgz0scubCSW6wdUdf0E86xkuq4mXvmXY2XZMa/NeZGQtNCE5fvAut4Hq2eKjhjC5PsHIdTqWOKG3FVr3d5Jcyg0xQIc3/yr89uaf06HIJHwJvs2Vw==
+	# http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+	# http://example.com/7552030/wwWqwyNF2AOlQp1Fme0dN9PUgUQ=	uib9YbHfPrVrRphw4CcKmgJHr99OAjfrjo+NtkvZR4B+9rJ3Ux3sUvUx7RQXDIfPTDqZeHLN+sAZqJ3fqYtL/Q==
+	# http://example.com/19717926/w/CZTchiAWA=	8OjYTkxoNyw4DJAUJOrohxZB
+	# http://example.com/24743913/yq5Q7vTm8ZNRIuSGSFuIDRPTZ9y9x5Q=	fSFFmd93xyiqk8B7OVY8uTiXIjp3oMcfgMjBNsXPQbwS5q5cqSLGgQ5FSErQJpOMjZDJu2qRt91KKgFI8Uru3Uwab3My2bSWWB62+6+GXbXvXpY1dyoHMr+3wHJvB0oH2M3pQ5q2r2+QKQ6XXrQc5A==
+	# http://example.com/32643403/0QXcqYIRJM28knAW/uLFRzzbWWJvtYiXkwQ=	7HM6O+HN+rQcL2GkdE6sXcUkGeqggfx4fW0eyE6JTbaNVlA+7eyuKdIUsIAw1Hvs0BH3ZT3lzLvMWnzYWg==
+	# http://example.com/42534638/YxprXKYISmyVSZMJDixo3dAoHgUngEy3snU=	Xs69GJCJRJcDneu5AOIEOOjxzdQOGxhjbWPBDNo2
+	# http://example.com/47951266/58Q9UQaVJ/+H5up+rN4Qi2bSnM0=	zfNsfRduj8EExR8A0jaTKv6jp5UdZHPhZ/yiR1hF+ueLmVaxfQnkxQt9/sL3d/QI2YVT2+FbsKjBI7AJfEvysGiH8rRwOjZCHToNLAM9Ig4b4W0qOwuc20DKGRvjrKf2HYRyoUROCX38n+Dz
+	# http://example.com/49085328/iRBbc/7CpK0SthWKlK1HdfDH	9DNJSpiVRXjpH+I=
+	# short: oNw3FDF2QDoQb0  → 5010430
+fi
+lines_size=$(stat --printf="%s" lines-50m.txt)
+lines_count=50_000_000
+
+bench_cmd 1 'cat lines-50m.txt > /dev/null'                                                                      50m-00-warmup.csv                   $lines_size $lines_count
+bench_cmd 3 'grep oNw3FDF2QDoQb0 lines-50m.txt'                                                                  50m-01-grep-short.csv               $lines_size $lines_count
+bench_cmd 3 './c1-line-strstr oNw3FDF2QDoQb0 lines-50m.txt'                                                      50m-08-c1-line-strstr.csv           $lines_size $lines_count
+bench_cmd 3 './c4-all-strstr oNw3FDF2QDoQb0 lines-50m.txt'                                                       50m-11-c4-all-strstr.csv            $lines_size $lines_count
+bench_cmd 3 './c5-threaded-strstr oNw3FDF2QDoQb0 lines-50m.txt 2'                                                50m-12-c5-2threads-strstr.csv       $lines_size $lines_count
+bench_cmd 3 './c5-threaded-strstr oNw3FDF2QDoQb0 lines-50m.txt 4'                                                50m-13-c5-4threads-strstr.csv       $lines_size $lines_count
+bench_cmd 3 './c5-threaded-strstr oNw3FDF2QDoQb0 lines-50m.txt 8'                                                50m-14-c5-8threads-strstr.csv       $lines_size $lines_count
+bench_cmd 3 'python3.8 py3-mmap-all-find.py oNw3FDF2QDoQb0 lines-50m.txt'                                        50m-19-py3-mmap-all-find.csv        $lines_size $lines_count
+
+
+if test ! -f lines-100m.txt; then
+	echo "Generating lines-100m.txt..."
+	ruby gen-lines.rb 100_000_000 > lines-100m.txt
+	# sample lines:
+	# http://example.com/206745/SkdLwsMKrhOQBaLv2JMAXT0=	mY1GI9RXe7Ji756zJy6NdD9o6W9zQ5NNldd9RWb8GyAcDDTLWBezGR/UojrOzFBN91KJHWsf/YXUwfM=
+	# http://example.com/2555337/W4CjnmWLYlPWMB/6guLz4E5tEy0/	cGoLt3dD6HQxqnbkB0Euuupx
+	# http://example.com/39491796/gBfe11alkDr8piK1XkMe	bIuXyL3bXd08DQky5BUwPMT5RUDKnzy3wX387OJNj/4MWENKdEWI2tYsSQ0jHNce
+	# http://example.com/40317941/MAEw1igYaheWJuxGO2zHGwZs3g==	VIrkxp++gYDTu1g2+Y/RS8o2SSt/r70LyB5VUOc=
+	# http://example.com/40451156/+vx4twZIgHximhm3gzv2FaIxhw==	fsbck7cfiOLNHXI+FodRo2ULO1MfCGkY2lRbl2RRAz1gQr73dkKPLEV3CF+5HxJJF98x4y+EdMfQxSnBTLNGHGJ0ciIFxh0ZNhiIX0tTlMK8x4avb8yObqgSWxVIqM1DF2CrwvuZ185WvsMWHUtA9A==
+	# http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+	# http://example.com/61263977/aq8YeHorhkKt9HRICEM=	Z9iLktmumXS1Kpxq0oBAaWRcIPv7ofrJ09I3QaAKBUnC6RKiUXzNOoNZWBnfUiFXkvMSY5BEktP08J+yvHrUxzMZJlrgH9DdX7vAmyMcTgoGLdbiuTLSy4I=
+	# http://example.com/62651960/NgP8oWgdbCvBFg6/L4LosA==	xINpTWkJzdGeEko3UXFR8uBkk1H8dtONOCbePHdTmNQ8k0QSvfyyG/ZzP2tFfY4BSNY8tnie6sHOry4jVzG5FnbIa74svMr7iHqG/9yT37D6jBJShB3xkjlRFGsVPsSXRZ3p9sZFqky2sGgZ6VIOfEMPgtCs0gq2yLcGD1E=
+	# http://example.com/65335414/LNhxRQWNB0N3Q16J8khfPDc=	WxErpeHDxm6Y0u5oKGv9wUFGY2G6LlSm1MOtPayGbkyKHB26e+Jfa2p9sEdOZXCziFWwlIC/qS8eYpdn2ECnkMMJEXs17jqS7G1/ySuxpy2hEwGAZ6hfWPrlF6KZ+JjFlzHyjHqsxdT25StCuDFasHj2VcSOM9RA7bEPe8ZuNQ==
+	# short: 0X9ctk2AHVHk8u  → 45573539
+fi
+lines_size=$(stat --printf="%s" lines-100m.txt)
+lines_count=100_000_000
+
+bench_cmd 1 'cat lines-100m.txt > /dev/null'                                                                      100m-00-warmup.csv                   $lines_size $lines_count
+bench_cmd 2 'grep 0X9ctk2AHVHk8u lines-100m.txt'                                                                  100m-01-grep-short.csv               $lines_size $lines_count
+bench_cmd 2 './c1-line-strstr 0X9ctk2AHVHk8u lines-100m.txt'                                                      100m-08-c1-line-strstr.csv           $lines_size $lines_count
+bench_cmd 2 './c4-all-strstr 0X9ctk2AHVHk8u lines-100m.txt'                                                       100m-11-c4-all-strstr.csv            $lines_size $lines_count
+bench_cmd 2 './c5-threaded-strstr 0X9ctk2AHVHk8u lines-100m.txt 2'                                                100m-12-c5-2threads-strstr.csv       $lines_size $lines_count
+bench_cmd 2 './c5-threaded-strstr 0X9ctk2AHVHk8u lines-100m.txt 4'                                                100m-13-c5-4threads-strstr.csv       $lines_size $lines_count
+bench_cmd 2 './c5-threaded-strstr 0X9ctk2AHVHk8u lines-100m.txt 8'                                                100m-14-c5-8threads-strstr.csv       $lines_size $lines_count
+bench_cmd 2 'python3.8 py3-mmap-all-find.py 0X9ctk2AHVHk8u lines-100m.txt'                                        100m-19-py3-mmap-all-find.csv        $lines_size $lines_count

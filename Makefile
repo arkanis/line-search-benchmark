@@ -1,6 +1,8 @@
 CFLAGS = -std=c99 -Wall -Werror -O2
+ALL = c1-line-strstr c2-line-str_contains c3-line-fancy c4-all-strstr c5-threaded-strstr
 
-c5-threaded-strstr c6-threaded-mmap-strstr: CFLAGS += -pthread
+all: $(ALL)
+c5-threaded-strstr: CFLAGS += -pthread
 
 clean:
-	rm -f c1-line-strstr c2-line-str_contains c3-line-fancy c4-all-strstr c5-threaded-strstr c6-threaded-mmap-strstr
+	rm -f $(ALL)
