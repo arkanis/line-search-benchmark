@@ -11,7 +11,11 @@ with open(file) as f:
             start = mm.rfind(b"\n", 0, pos)
             if start == -1:
                 start = 0
+            else:
+            	start += 1
             end = mm.find(b"\n", pos)
-            print(mm[start:end])
+            
+            # write bytes directly without converting it to utf-8
+            sys.stdout.buffer.write(mm[start:end] + b"\n")
             
             pos += len(search)

@@ -7,4 +7,5 @@ with open(file) as f:
     with mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ) as mm:
         while ( (line := mm.readline()) != b"" ):
             if line.find(search) != -1:
-                print(line)
+            	# write bytes directly without converting it to utf-8
+            	sys.stdout.buffer.write(line)
