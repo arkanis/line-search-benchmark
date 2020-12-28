@@ -15,11 +15,11 @@ function bench_cmd {
 		echo "RUN $i: $cmd → $?"
 	done
 	
-	# The awk skript skips the first and last line (column names in first line, last is an empty line)
-	local avg_wall_time=$(awk 'NR > 1 { sum += $1 } END { print sum / (NR - 2) }' < $log_file)
+	# The awk skript skips the first line (column names). The last (empty) line is skipped automatically it seems.
+	local avg_wall_time=$(awk 'NR > 1 { sum += $1 } END { print sum / (NR - 1) }' < $log_file)
 	local mb_per_sec=$(awk "BEGIN { print int(($lines_size / $avg_wall_time) / (1024*1024)) }")
 	local mil_lines_per_sec=$(awk "BEGIN { print ($lines_count / $avg_wall_time) / 1000000.0 }")
-	# LC_NUMERIC=C makes sure that printf %f reads and outputs in 1.23 format
+	# LC_NUMERIC=C makes sure that printf %f reads and outputs in 1.23 format, even if the terminal uses a different locale
 	LC_NUMERIC=C printf '%-35s%13.3f, %8d, %8.2f\n' "${log_file%%.csv}," $avg_wall_time $mb_per_sec $mil_lines_per_sec >&2
 }
 
@@ -29,6 +29,7 @@ grep --version
 sed --version
 awk --version
 mawk -W version 2>&1
+gcc --version
 php --version
 python3.8 --version
 ruby --version
@@ -74,7 +75,7 @@ fi
 lines_size=$(stat --printf="%s" lines-1m.txt)
 lines_count=1_000_000
 
-bench_cmd 1  'cat lines-1m.txt > /dev/null'                                                                      1m-00-warmup.csv                   $lines_size $lines_count
+bench_cmd 1  'wc -l lines-1m.txt'                                                                                1m-00-warmup.csv                   $lines_size $lines_count
 bench_cmd 10 'grep 7Xbs7f0hhn2Alb lines-1m.txt'                                                                  1m-01-grep-short.csv               $lines_size $lines_count
 bench_cmd 10 'grep ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4 lines-1m.txt'                                          1m-02-grep-medium.csv              $lines_size $lines_count
 bench_cmd 10 'grep WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE lines-1m.txt' 1m-03-grep-long.csv                $lines_size $lines_count
@@ -115,7 +116,7 @@ fi
 lines_size=$(stat --printf="%s" lines-10m.txt)
 lines_count=10_000_000
 
-bench_cmd 1  'cat lines-10m.txt > /dev/null'                                                                      10m-00-warmup.csv                   $lines_size $lines_count
+bench_cmd 1  'wc -l lines-10m.txt'                                                                                10m-00-warmup.csv                   $lines_size $lines_count
 bench_cmd 10 'grep VrKDJbjoQ9xnzg lines-10m.txt'                                                                  10m-01-grep-short.csv               $lines_size $lines_count
 bench_cmd 10 'grep V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEK lines-10m.txt'                                          10m-02-grep-medium.csv              $lines_size $lines_count
 bench_cmd 10 'grep FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c lines-10m.txt'    10m-03-grep-long.csv                $lines_size $lines_count
@@ -158,7 +159,7 @@ fi
 lines_size=$(stat --printf="%s" lines-50m.txt)
 lines_count=50_000_000
 
-bench_cmd 1 'cat lines-50m.txt > /dev/null'                                                                      50m-00-warmup.csv                   $lines_size $lines_count
+bench_cmd 1 'wc -l lines-50m.txt'                                                                                50m-00-warmup.csv                   $lines_size $lines_count
 bench_cmd 3 'grep oNw3FDF2QDoQb0 lines-50m.txt'                                                                  50m-01-grep-short.csv               $lines_size $lines_count
 bench_cmd 3 './c1-line-strstr oNw3FDF2QDoQb0 lines-50m.txt'                                                      50m-08-c1-line-strstr.csv           $lines_size $lines_count
 bench_cmd 3 './c4-all-strstr oNw3FDF2QDoQb0 lines-50m.txt'                                                       50m-11-c4-all-strstr.csv            $lines_size $lines_count
@@ -186,7 +187,7 @@ fi
 lines_size=$(stat --printf="%s" lines-100m.txt)
 lines_count=100_000_000
 
-bench_cmd 1 'cat lines-100m.txt > /dev/null'                                                                      100m-00-warmup.csv                   $lines_size $lines_count
+bench_cmd 1 'wc -l lines-100m.txt'                                                                                100m-00-warmup.csv                   $lines_size $lines_count
 bench_cmd 2 'grep 0X9ctk2AHVHk8u lines-100m.txt'                                                                  100m-01-grep-short.csv               $lines_size $lines_count
 bench_cmd 2 './c1-line-strstr 0X9ctk2AHVHk8u lines-100m.txt'                                                      100m-08-c1-line-strstr.csv           $lines_size $lines_count
 bench_cmd 2 './c4-all-strstr 0X9ctk2AHVHk8u lines-100m.txt'                                                       100m-11-c4-all-strstr.csv            $lines_size $lines_count
