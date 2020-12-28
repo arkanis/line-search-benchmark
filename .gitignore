@@ -7,3 +7,6 @@ core
 bench-*
 *.csv
 *.log
+
+# Generated charts
+*.svg
