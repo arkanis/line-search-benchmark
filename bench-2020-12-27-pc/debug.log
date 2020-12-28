@@ -1,0 +1,980 @@
+Program versions:
+
+grep (GNU grep) 3.1
+Copyright (C) 2017 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by Mike Haertel and others, see <http://git.sv.gnu.org/cgit/grep.git/tree/AUTHORS>.
+sed (GNU sed) 4.4
+Copyright (C) 2017 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by Jay Fenlason, Tom Lord, Ken Pizzini,
+and Paolo Bonzini.
+GNU sed home page: <http://www.gnu.org/software/sed/>.
+General help using GNU software: <http://www.gnu.org/gethelp/>.
+E-mail bug reports to: <bug-sed@gnu.org>.
+GNU Awk 4.1.4, API: 1.1 (GNU MPFR 4.0.1, GNU MP 6.1.2)
+Copyright (C) 1989, 1991-2016 Free Software Foundation.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see http://www.gnu.org/licenses/.
+mawk 1.3.3 Nov 1996, Copyright (C) Michael D. Brennan
+
+compiled limits:
+max NF             32767
+sprintf buffer      2040
+gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0
+Copyright (C) 2017 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+PHP 7.2.24-0ubuntu0.18.04.6 (cli) (built: May 26 2020 13:09:11) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.2.0, Copyright (c) 1998-2018 Zend Technologies
+    with Zend OPcache v7.2.24-0ubuntu0.18.04.6, Copyright (c) 1999-2018, by Zend Technologies
+Python 3.8.0
+ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux-gnu]
+
+Compiling c programs:
+
+cc -std=c99 -Wall -Werror -O2    c1-line-strstr.c   -o c1-line-strstr
+cc -std=c99 -Wall -Werror -O2    c2-line-str_contains.c   -o c2-line-str_contains
+cc -std=c99 -Wall -Werror -O2    c3-line-fancy.c   -o c3-line-fancy
+cc -std=c99 -Wall -Werror -O2    c4-all-strstr.c   -o c4-all-strstr
+cc -std=c99 -Wall -Werror -O2 -pthread    c5-threaded-strstr.c   -o c5-threaded-strstr
+
+Running benchmarks:
+
+1000000 lines-1m.txt
+RUN 1: wc -l lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: grep 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: grep 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: grep 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: grep 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: grep 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: grep 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: grep 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: grep 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: grep 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: grep 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/768201/u4CU99GsKVtYfZSs965TCA==	6LlXN9tEfah/ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4+rO3IAtNxfHF/31Gs9Uv9FM6AyAhPYjahAEvMuWCrYBbn46FV7ysE7ckXf7pv97UKrzkEBPKsNMwOPSByP
+RUN 1: grep ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4 lines-1m.txt → 0
+http://example.com/768201/u4CU99GsKVtYfZSs965TCA==	6LlXN9tEfah/ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4+rO3IAtNxfHF/31Gs9Uv9FM6AyAhPYjahAEvMuWCrYBbn46FV7ysE7ckXf7pv97UKrzkEBPKsNMwOPSByP
+RUN 2: grep ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4 lines-1m.txt → 0
+http://example.com/768201/u4CU99GsKVtYfZSs965TCA==	6LlXN9tEfah/ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4+rO3IAtNxfHF/31Gs9Uv9FM6AyAhPYjahAEvMuWCrYBbn46FV7ysE7ckXf7pv97UKrzkEBPKsNMwOPSByP
+RUN 3: grep ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4 lines-1m.txt → 0
+http://example.com/768201/u4CU99GsKVtYfZSs965TCA==	6LlXN9tEfah/ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4+rO3IAtNxfHF/31Gs9Uv9FM6AyAhPYjahAEvMuWCrYBbn46FV7ysE7ckXf7pv97UKrzkEBPKsNMwOPSByP
+RUN 4: grep ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4 lines-1m.txt → 0
+http://example.com/768201/u4CU99GsKVtYfZSs965TCA==	6LlXN9tEfah/ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4+rO3IAtNxfHF/31Gs9Uv9FM6AyAhPYjahAEvMuWCrYBbn46FV7ysE7ckXf7pv97UKrzkEBPKsNMwOPSByP
+RUN 5: grep ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4 lines-1m.txt → 0
+http://example.com/768201/u4CU99GsKVtYfZSs965TCA==	6LlXN9tEfah/ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4+rO3IAtNxfHF/31Gs9Uv9FM6AyAhPYjahAEvMuWCrYBbn46FV7ysE7ckXf7pv97UKrzkEBPKsNMwOPSByP
+RUN 6: grep ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4 lines-1m.txt → 0
+http://example.com/768201/u4CU99GsKVtYfZSs965TCA==	6LlXN9tEfah/ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4+rO3IAtNxfHF/31Gs9Uv9FM6AyAhPYjahAEvMuWCrYBbn46FV7ysE7ckXf7pv97UKrzkEBPKsNMwOPSByP
+RUN 7: grep ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4 lines-1m.txt → 0
+http://example.com/768201/u4CU99GsKVtYfZSs965TCA==	6LlXN9tEfah/ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4+rO3IAtNxfHF/31Gs9Uv9FM6AyAhPYjahAEvMuWCrYBbn46FV7ysE7ckXf7pv97UKrzkEBPKsNMwOPSByP
+RUN 8: grep ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4 lines-1m.txt → 0
+http://example.com/768201/u4CU99GsKVtYfZSs965TCA==	6LlXN9tEfah/ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4+rO3IAtNxfHF/31Gs9Uv9FM6AyAhPYjahAEvMuWCrYBbn46FV7ysE7ckXf7pv97UKrzkEBPKsNMwOPSByP
+RUN 9: grep ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4 lines-1m.txt → 0
+http://example.com/768201/u4CU99GsKVtYfZSs965TCA==	6LlXN9tEfah/ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4+rO3IAtNxfHF/31Gs9Uv9FM6AyAhPYjahAEvMuWCrYBbn46FV7ysE7ckXf7pv97UKrzkEBPKsNMwOPSByP
+RUN 10: grep ZwZcUcQYPf7ASxHNHWqffMQldPrYsHJzsR72T4 lines-1m.txt → 0
+http://example.com/731370/ulAB5GONmZbFWQztfyyD	bLLo6RgSqtuKTiM0cCYRlADUyBBByY8uCRZh6ft+WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE=
+RUN 1: grep WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE lines-1m.txt → 0
+http://example.com/731370/ulAB5GONmZbFWQztfyyD	bLLo6RgSqtuKTiM0cCYRlADUyBBByY8uCRZh6ft+WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE=
+RUN 2: grep WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE lines-1m.txt → 0
+http://example.com/731370/ulAB5GONmZbFWQztfyyD	bLLo6RgSqtuKTiM0cCYRlADUyBBByY8uCRZh6ft+WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE=
+RUN 3: grep WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE lines-1m.txt → 0
+http://example.com/731370/ulAB5GONmZbFWQztfyyD	bLLo6RgSqtuKTiM0cCYRlADUyBBByY8uCRZh6ft+WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE=
+RUN 4: grep WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE lines-1m.txt → 0
+http://example.com/731370/ulAB5GONmZbFWQztfyyD	bLLo6RgSqtuKTiM0cCYRlADUyBBByY8uCRZh6ft+WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE=
+RUN 5: grep WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE lines-1m.txt → 0
+http://example.com/731370/ulAB5GONmZbFWQztfyyD	bLLo6RgSqtuKTiM0cCYRlADUyBBByY8uCRZh6ft+WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE=
+RUN 6: grep WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE lines-1m.txt → 0
+http://example.com/731370/ulAB5GONmZbFWQztfyyD	bLLo6RgSqtuKTiM0cCYRlADUyBBByY8uCRZh6ft+WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE=
+RUN 7: grep WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE lines-1m.txt → 0
+http://example.com/731370/ulAB5GONmZbFWQztfyyD	bLLo6RgSqtuKTiM0cCYRlADUyBBByY8uCRZh6ft+WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE=
+RUN 8: grep WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE lines-1m.txt → 0
+http://example.com/731370/ulAB5GONmZbFWQztfyyD	bLLo6RgSqtuKTiM0cCYRlADUyBBByY8uCRZh6ft+WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE=
+RUN 9: grep WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE lines-1m.txt → 0
+http://example.com/731370/ulAB5GONmZbFWQztfyyD	bLLo6RgSqtuKTiM0cCYRlADUyBBByY8uCRZh6ft+WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE=
+RUN 10: grep WA02gPdPz55z5E7ed9RGaQlcnMTrvSkZgvKoNaMWVaKRjyLIkwURVnea48eGQEhSFfKwQJkNZCTWWgE lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: sed /7Xbs7f0hhn2Alb/!d lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: sed /7Xbs7f0hhn2Alb/!d lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: sed /7Xbs7f0hhn2Alb/!d lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: sed /7Xbs7f0hhn2Alb/!d lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: sed /7Xbs7f0hhn2Alb/!d lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: sed /7Xbs7f0hhn2Alb/!d lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: sed /7Xbs7f0hhn2Alb/!d lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: sed /7Xbs7f0hhn2Alb/!d lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: sed /7Xbs7f0hhn2Alb/!d lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: sed /7Xbs7f0hhn2Alb/!d lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: awk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: awk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: awk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: awk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: awk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: awk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: awk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: awk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: awk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: awk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: mawk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: mawk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: mawk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: mawk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: mawk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: mawk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: mawk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: mawk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: mawk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: mawk /7Xbs7f0hhn2Alb/ lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: mawk index($2,"7Xbs7f0hhn2Alb") lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: mawk index($2,"7Xbs7f0hhn2Alb") lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: mawk index($2,"7Xbs7f0hhn2Alb") lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: mawk index($2,"7Xbs7f0hhn2Alb") lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: mawk index($2,"7Xbs7f0hhn2Alb") lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: mawk index($2,"7Xbs7f0hhn2Alb") lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: mawk index($2,"7Xbs7f0hhn2Alb") lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: mawk index($2,"7Xbs7f0hhn2Alb") lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: mawk index($2,"7Xbs7f0hhn2Alb") lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: mawk index($2,"7Xbs7f0hhn2Alb") lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: ./c1-line-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: ./c1-line-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: ./c1-line-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: ./c1-line-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: ./c1-line-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: ./c1-line-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: ./c1-line-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: ./c1-line-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: ./c1-line-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: ./c1-line-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: ./c2-line-str_contains 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: ./c2-line-str_contains 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: ./c2-line-str_contains 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: ./c2-line-str_contains 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: ./c2-line-str_contains 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: ./c2-line-str_contains 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: ./c2-line-str_contains 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: ./c2-line-str_contains 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: ./c2-line-str_contains 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: ./c2-line-str_contains 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2Alb
+RUN 1: ./c3-line-fancy 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2Alb
+RUN 2: ./c3-line-fancy 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2Alb
+RUN 3: ./c3-line-fancy 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2Alb
+RUN 4: ./c3-line-fancy 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2Alb
+RUN 5: ./c3-line-fancy 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2Alb
+RUN 6: ./c3-line-fancy 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2Alb
+RUN 7: ./c3-line-fancy 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2Alb
+RUN 8: ./c3-line-fancy 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2Alb
+RUN 9: ./c3-line-fancy 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2Alb
+RUN 10: ./c3-line-fancy 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: ./c4-all-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: ./c4-all-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: ./c4-all-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: ./c4-all-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: ./c4-all-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: ./c4-all-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: ./c4-all-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: ./c4-all-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: ./c4-all-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: ./c4-all-strstr 7Xbs7f0hhn2Alb lines-1m.txt → 0
+[worker 7F6A93B7C700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 2 → 0
+[worker 7FFB3C52E700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 2 → 0
+[worker 7F6501A26700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 2 → 0
+[worker 7FD2CB348700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 2 → 0
+[worker 7FFBB0C85700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 2 → 0
+[worker 7F0D63EDA700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 2 → 0
+[worker 7F15F1637700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 2 → 0
+[worker 7FF8594DD700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 2 → 0
+[worker 7F59DD9A0700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 2 → 0
+[worker 7F0EA766D700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 2 → 0
+[worker 7FADAF8C5700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 4 → 0
+[worker 7F84B3798700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 4 → 0
+[worker 7F56AC383700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 4 → 0
+[worker 7F8B338CD700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 4 → 0
+[worker 7F406C9D0700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 4 → 0
+[worker 7F3591E91700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 4 → 0
+[worker 7F491CEE7700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 4 → 0
+[worker 7F3E91597700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 4 → 0
+[worker 7F71CDDA8700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 4 → 0
+[worker 7F6F60B82700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 4 → 0
+[worker 7F47C4308700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 8 → 0
+[worker 7F2DE1DBA700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 8 → 0
+[worker 7F7C7D653700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 8 → 0
+[worker 7F9C17080700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 8 → 0
+[worker 7F782D04A700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 8 → 0
+[worker 7FEFEE3B8700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 8 → 0
+[worker 7F753DB72700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 8 → 0
+[worker 7FCB1B807700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 8 → 0
+[worker 7FDECB96D700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 8 → 0
+[worker 7FE19CC22700] http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: ./c5-threaded-strstr 7Xbs7f0hhn2Alb lines-1m.txt 8 → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: php php1-line-strstr.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: php php1-line-strstr.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: php php1-line-strstr.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: php php1-line-strstr.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: php php1-line-strstr.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: php php1-line-strstr.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: php php1-line-strstr.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: php php1-line-strstr.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: php php1-line-strstr.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: php php1-line-strstr.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: php php2-all-strpos.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: php php2-all-strpos.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: php php2-all-strpos.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: php php2-all-strpos.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: php php2-all-strpos.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: php php2-all-strpos.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: php php2-all-strpos.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: php php2-all-strpos.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: php php2-all-strpos.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: php php2-all-strpos.php 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: python3.8 py1-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: python3.8 py1-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: python3.8 py1-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: python3.8 py1-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: python3.8 py1-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: python3.8 py1-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: python3.8 py1-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: python3.8 py1-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: python3.8 py1-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: python3.8 py1-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: python3.8 py2-mmap-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: python3.8 py2-mmap-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: python3.8 py2-mmap-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: python3.8 py2-mmap-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: python3.8 py2-mmap-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: python3.8 py2-mmap-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: python3.8 py2-mmap-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: python3.8 py2-mmap-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: python3.8 py2-mmap-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: python3.8 py2-mmap-line-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: python3.8 py3-mmap-all-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: python3.8 py3-mmap-all-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: python3.8 py3-mmap-all-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: python3.8 py3-mmap-all-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: python3.8 py3-mmap-all-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: python3.8 py3-mmap-all-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: python3.8 py3-mmap-all-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: python3.8 py3-mmap-all-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: python3.8 py3-mmap-all-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: python3.8 py3-mmap-all-find.py 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: ruby ruby1-line-include.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: ruby ruby1-line-include.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: ruby ruby1-line-include.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: ruby ruby1-line-include.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: ruby ruby1-line-include.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: ruby ruby1-line-include.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: ruby ruby1-line-include.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: ruby ruby1-line-include.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: ruby ruby1-line-include.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: ruby ruby1-line-include.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 1: ruby ruby2-all-index.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 2: ruby ruby2-all-index.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 3: ruby ruby2-all-index.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 4: ruby ruby2-all-index.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 5: ruby ruby2-all-index.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 6: ruby ruby2-all-index.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 7: ruby ruby2-all-index.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 8: ruby ruby2-all-index.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 9: ruby ruby2-all-index.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+http://example.com/56875/urUCcbHy7k7h	7Xbs7f0hhn2AlbkHOuw=
+RUN 10: ruby ruby2-all-index.rb 7Xbs7f0hhn2Alb lines-1m.txt → 0
+10000000 lines-10m.txt
+RUN 1: wc -l lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: grep VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: grep VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: grep VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: grep VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: grep VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: grep VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: grep VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: grep VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: grep VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: grep VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/3503259/V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEKAE	j/tkgNV2c+ACibA3tpPgELnHPYT+3O32QLxFiAFdoGUl9xD9hl/0gCMprpGmMJqKFdU7Y0lkgriled853IQ+2Q1Ub3hMA4n8xpS9c+TLNg==
+RUN 1: grep V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEK lines-10m.txt → 0
+http://example.com/3503259/V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEKAE	j/tkgNV2c+ACibA3tpPgELnHPYT+3O32QLxFiAFdoGUl9xD9hl/0gCMprpGmMJqKFdU7Y0lkgriled853IQ+2Q1Ub3hMA4n8xpS9c+TLNg==
+RUN 2: grep V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEK lines-10m.txt → 0
+http://example.com/3503259/V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEKAE	j/tkgNV2c+ACibA3tpPgELnHPYT+3O32QLxFiAFdoGUl9xD9hl/0gCMprpGmMJqKFdU7Y0lkgriled853IQ+2Q1Ub3hMA4n8xpS9c+TLNg==
+RUN 3: grep V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEK lines-10m.txt → 0
+http://example.com/3503259/V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEKAE	j/tkgNV2c+ACibA3tpPgELnHPYT+3O32QLxFiAFdoGUl9xD9hl/0gCMprpGmMJqKFdU7Y0lkgriled853IQ+2Q1Ub3hMA4n8xpS9c+TLNg==
+RUN 4: grep V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEK lines-10m.txt → 0
+http://example.com/3503259/V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEKAE	j/tkgNV2c+ACibA3tpPgELnHPYT+3O32QLxFiAFdoGUl9xD9hl/0gCMprpGmMJqKFdU7Y0lkgriled853IQ+2Q1Ub3hMA4n8xpS9c+TLNg==
+RUN 5: grep V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEK lines-10m.txt → 0
+http://example.com/3503259/V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEKAE	j/tkgNV2c+ACibA3tpPgELnHPYT+3O32QLxFiAFdoGUl9xD9hl/0gCMprpGmMJqKFdU7Y0lkgriled853IQ+2Q1Ub3hMA4n8xpS9c+TLNg==
+RUN 6: grep V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEK lines-10m.txt → 0
+http://example.com/3503259/V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEKAE	j/tkgNV2c+ACibA3tpPgELnHPYT+3O32QLxFiAFdoGUl9xD9hl/0gCMprpGmMJqKFdU7Y0lkgriled853IQ+2Q1Ub3hMA4n8xpS9c+TLNg==
+RUN 7: grep V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEK lines-10m.txt → 0
+http://example.com/3503259/V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEKAE	j/tkgNV2c+ACibA3tpPgELnHPYT+3O32QLxFiAFdoGUl9xD9hl/0gCMprpGmMJqKFdU7Y0lkgriled853IQ+2Q1Ub3hMA4n8xpS9c+TLNg==
+RUN 8: grep V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEK lines-10m.txt → 0
+http://example.com/3503259/V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEKAE	j/tkgNV2c+ACibA3tpPgELnHPYT+3O32QLxFiAFdoGUl9xD9hl/0gCMprpGmMJqKFdU7Y0lkgriled853IQ+2Q1Ub3hMA4n8xpS9c+TLNg==
+RUN 9: grep V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEK lines-10m.txt → 0
+http://example.com/3503259/V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEKAE	j/tkgNV2c+ACibA3tpPgELnHPYT+3O32QLxFiAFdoGUl9xD9hl/0gCMprpGmMJqKFdU7Y0lkgriled853IQ+2Q1Ub3hMA4n8xpS9c+TLNg==
+RUN 10: grep V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEK lines-10m.txt → 0
+http://example.com/4097761/2bKX3FQY+hnG	0k3j5evTu+FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c+3jBoZCuL9k+tvrm178dppX5r7xSyDrAtjWHbtM2DBr1j8C13yYudNbTTEu7LJntONc+SY2Vs2WXBige8yAYRq
+RUN 1: grep FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c lines-10m.txt → 0
+http://example.com/4097761/2bKX3FQY+hnG	0k3j5evTu+FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c+3jBoZCuL9k+tvrm178dppX5r7xSyDrAtjWHbtM2DBr1j8C13yYudNbTTEu7LJntONc+SY2Vs2WXBige8yAYRq
+RUN 2: grep FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c lines-10m.txt → 0
+http://example.com/4097761/2bKX3FQY+hnG	0k3j5evTu+FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c+3jBoZCuL9k+tvrm178dppX5r7xSyDrAtjWHbtM2DBr1j8C13yYudNbTTEu7LJntONc+SY2Vs2WXBige8yAYRq
+RUN 3: grep FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c lines-10m.txt → 0
+http://example.com/4097761/2bKX3FQY+hnG	0k3j5evTu+FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c+3jBoZCuL9k+tvrm178dppX5r7xSyDrAtjWHbtM2DBr1j8C13yYudNbTTEu7LJntONc+SY2Vs2WXBige8yAYRq
+RUN 4: grep FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c lines-10m.txt → 0
+http://example.com/4097761/2bKX3FQY+hnG	0k3j5evTu+FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c+3jBoZCuL9k+tvrm178dppX5r7xSyDrAtjWHbtM2DBr1j8C13yYudNbTTEu7LJntONc+SY2Vs2WXBige8yAYRq
+RUN 5: grep FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c lines-10m.txt → 0
+http://example.com/4097761/2bKX3FQY+hnG	0k3j5evTu+FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c+3jBoZCuL9k+tvrm178dppX5r7xSyDrAtjWHbtM2DBr1j8C13yYudNbTTEu7LJntONc+SY2Vs2WXBige8yAYRq
+RUN 6: grep FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c lines-10m.txt → 0
+http://example.com/4097761/2bKX3FQY+hnG	0k3j5evTu+FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c+3jBoZCuL9k+tvrm178dppX5r7xSyDrAtjWHbtM2DBr1j8C13yYudNbTTEu7LJntONc+SY2Vs2WXBige8yAYRq
+RUN 7: grep FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c lines-10m.txt → 0
+http://example.com/4097761/2bKX3FQY+hnG	0k3j5evTu+FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c+3jBoZCuL9k+tvrm178dppX5r7xSyDrAtjWHbtM2DBr1j8C13yYudNbTTEu7LJntONc+SY2Vs2WXBige8yAYRq
+RUN 8: grep FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c lines-10m.txt → 0
+http://example.com/4097761/2bKX3FQY+hnG	0k3j5evTu+FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c+3jBoZCuL9k+tvrm178dppX5r7xSyDrAtjWHbtM2DBr1j8C13yYudNbTTEu7LJntONc+SY2Vs2WXBige8yAYRq
+RUN 9: grep FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c lines-10m.txt → 0
+http://example.com/4097761/2bKX3FQY+hnG	0k3j5evTu+FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c+3jBoZCuL9k+tvrm178dppX5r7xSyDrAtjWHbtM2DBr1j8C13yYudNbTTEu7LJntONc+SY2Vs2WXBige8yAYRq
+RUN 10: grep FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: sed /VrKDJbjoQ9xnzg/!d lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: sed /VrKDJbjoQ9xnzg/!d lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: sed /VrKDJbjoQ9xnzg/!d lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: sed /VrKDJbjoQ9xnzg/!d lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: sed /VrKDJbjoQ9xnzg/!d lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: sed /VrKDJbjoQ9xnzg/!d lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: sed /VrKDJbjoQ9xnzg/!d lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: sed /VrKDJbjoQ9xnzg/!d lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: sed /VrKDJbjoQ9xnzg/!d lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: sed /VrKDJbjoQ9xnzg/!d lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: awk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: awk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: awk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: awk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: awk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: awk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: awk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: awk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: awk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: awk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: mawk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: mawk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: mawk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: mawk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: mawk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: mawk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: mawk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: mawk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: mawk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: mawk /VrKDJbjoQ9xnzg/ lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: mawk index($2,"VrKDJbjoQ9xnzg") lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: mawk index($2,"VrKDJbjoQ9xnzg") lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: mawk index($2,"VrKDJbjoQ9xnzg") lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: mawk index($2,"VrKDJbjoQ9xnzg") lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: mawk index($2,"VrKDJbjoQ9xnzg") lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: mawk index($2,"VrKDJbjoQ9xnzg") lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: mawk index($2,"VrKDJbjoQ9xnzg") lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: mawk index($2,"VrKDJbjoQ9xnzg") lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: mawk index($2,"VrKDJbjoQ9xnzg") lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: mawk index($2,"VrKDJbjoQ9xnzg") lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: ./c1-line-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: ./c1-line-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: ./c1-line-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: ./c1-line-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: ./c1-line-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: ./c1-line-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: ./c1-line-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: ./c1-line-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: ./c1-line-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: ./c1-line-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: ./c2-line-str_contains VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: ./c2-line-str_contains VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: ./c2-line-str_contains VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: ./c2-line-str_contains VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: ./c2-line-str_contains VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: ./c2-line-str_contains VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: ./c2-line-str_contains VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: ./c2-line-str_contains VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: ./c2-line-str_contains VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: ./c2-line-str_contains VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzg
+RUN 1: ./c3-line-fancy VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzg
+RUN 2: ./c3-line-fancy VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzg
+RUN 3: ./c3-line-fancy VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzg
+RUN 4: ./c3-line-fancy VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzg
+RUN 5: ./c3-line-fancy VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzg
+RUN 6: ./c3-line-fancy VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzg
+RUN 7: ./c3-line-fancy VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzg
+RUN 8: ./c3-line-fancy VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzg
+RUN 9: ./c3-line-fancy VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzg
+RUN 10: ./c3-line-fancy VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: ./c4-all-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: ./c4-all-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: ./c4-all-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: ./c4-all-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: ./c4-all-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: ./c4-all-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: ./c4-all-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: ./c4-all-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: ./c4-all-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: ./c4-all-strstr VrKDJbjoQ9xnzg lines-10m.txt → 0
+[worker 7F9EB386D700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 2 → 0
+[worker 7F1426B86700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 2 → 0
+[worker 7FD828097700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 2 → 0
+[worker 7F91C675D700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 2 → 0
+[worker 7F86DB7C9700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 2 → 0
+[worker 7F2DF95C2700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 2 → 0
+[worker 7F8AE4817700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 2 → 0
+[worker 7F9D51E79700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 2 → 0
+[worker 7FB4C79A4700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 2 → 0
+[worker 7F954DC99700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 2 → 0
+[worker 7F38F772F700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 4 → 0
+[worker 7F73A66F6700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 4 → 0
+[worker 7F7D2EB0D700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 4 → 0
+[worker 7F5576BD6700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 4 → 0
+[worker 7F0CEC887700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 4 → 0
+[worker 7FCC68465700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 4 → 0
+[worker 7F77BB25B700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 4 → 0
+[worker 7FE242D37700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 4 → 0
+[worker 7FB1BEB31700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 4 → 0
+[worker 7F4DA2369700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 4 → 0
+[worker 7F20875B8700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 8 → 0
+[worker 7F21B0527700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 8 → 0
+[worker 7F61577D3700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 8 → 0
+[worker 7F9D2F365700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 8 → 0
+[worker 7F2A70897700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 8 → 0
+[worker 7FD1BE1E7700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 8 → 0
+[worker 7FB29C270700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 8 → 0
+[worker 7F68B35E0700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 8 → 0
+[worker 7F050FCF6700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 8 → 0
+[worker 7F7142F90700] http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: ./c5-threaded-strstr VrKDJbjoQ9xnzg lines-10m.txt 8 → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: php php1-line-strstr.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: php php1-line-strstr.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: php php1-line-strstr.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: php php1-line-strstr.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: php php1-line-strstr.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: php php1-line-strstr.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: php php1-line-strstr.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: php php1-line-strstr.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: php php1-line-strstr.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: php php1-line-strstr.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: php php2-all-strpos.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: php php2-all-strpos.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: php php2-all-strpos.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: php php2-all-strpos.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: php php2-all-strpos.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: php php2-all-strpos.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: php php2-all-strpos.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: php php2-all-strpos.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: php php2-all-strpos.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: php php2-all-strpos.php VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: python3.8 py1-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: python3.8 py1-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: python3.8 py1-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: python3.8 py1-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: python3.8 py1-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: python3.8 py1-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: python3.8 py1-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: python3.8 py1-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: python3.8 py1-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: python3.8 py1-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: python3.8 py2-mmap-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: python3.8 py2-mmap-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: python3.8 py2-mmap-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: python3.8 py2-mmap-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: python3.8 py2-mmap-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: python3.8 py2-mmap-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: python3.8 py2-mmap-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: python3.8 py2-mmap-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: python3.8 py2-mmap-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: python3.8 py2-mmap-line-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: python3.8 py3-mmap-all-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: python3.8 py3-mmap-all-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: python3.8 py3-mmap-all-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: python3.8 py3-mmap-all-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: python3.8 py3-mmap-all-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: python3.8 py3-mmap-all-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: python3.8 py3-mmap-all-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: python3.8 py3-mmap-all-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: python3.8 py3-mmap-all-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: python3.8 py3-mmap-all-find.py VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: ruby ruby1-line-include.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: ruby ruby1-line-include.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: ruby ruby1-line-include.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: ruby ruby1-line-include.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: ruby ruby1-line-include.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: ruby ruby1-line-include.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: ruby ruby1-line-include.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: ruby ruby1-line-include.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: ruby ruby1-line-include.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: ruby ruby1-line-include.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 1: ruby ruby2-all-index.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 2: ruby ruby2-all-index.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 3: ruby ruby2-all-index.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 4: ruby ruby2-all-index.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 5: ruby ruby2-all-index.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 6: ruby ruby2-all-index.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 7: ruby ruby2-all-index.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 8: ruby ruby2-all-index.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 9: ruby ruby2-all-index.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+RUN 10: ruby ruby2-all-index.rb VrKDJbjoQ9xnzg lines-10m.txt → 0
+50000000 lines-50m.txt
+RUN 1: wc -l lines-50m.txt → 0
+http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 1: grep oNw3FDF2QDoQb0 lines-50m.txt → 0
+http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 2: grep oNw3FDF2QDoQb0 lines-50m.txt → 0
+http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 3: grep oNw3FDF2QDoQb0 lines-50m.txt → 0
+http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 1: ./c1-line-strstr oNw3FDF2QDoQb0 lines-50m.txt → 0
+http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 2: ./c1-line-strstr oNw3FDF2QDoQb0 lines-50m.txt → 0
+http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 3: ./c1-line-strstr oNw3FDF2QDoQb0 lines-50m.txt → 0
+http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 1: ./c4-all-strstr oNw3FDF2QDoQb0 lines-50m.txt → 0
+http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 2: ./c4-all-strstr oNw3FDF2QDoQb0 lines-50m.txt → 0
+http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 3: ./c4-all-strstr oNw3FDF2QDoQb0 lines-50m.txt → 0
+[worker 7F55572F2700] http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 1: ./c5-threaded-strstr oNw3FDF2QDoQb0 lines-50m.txt 2 → 0
+[worker 7F36ED7C8700] http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 2: ./c5-threaded-strstr oNw3FDF2QDoQb0 lines-50m.txt 2 → 0
+[worker 7F8296CFB700] http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 3: ./c5-threaded-strstr oNw3FDF2QDoQb0 lines-50m.txt 2 → 0
+[worker 7FC41B25E700] http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 1: ./c5-threaded-strstr oNw3FDF2QDoQb0 lines-50m.txt 4 → 0
+[worker 7F63EB0BE700] http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 2: ./c5-threaded-strstr oNw3FDF2QDoQb0 lines-50m.txt 4 → 0
+[worker 7F1473E60700] http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 3: ./c5-threaded-strstr oNw3FDF2QDoQb0 lines-50m.txt 4 → 0
+[worker 7FD74820E700] http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 1: ./c5-threaded-strstr oNw3FDF2QDoQb0 lines-50m.txt 8 → 0
+[worker 7F0E38244700] http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 2: ./c5-threaded-strstr oNw3FDF2QDoQb0 lines-50m.txt 8 → 0
+[worker 7F1D39206700] http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 3: ./c5-threaded-strstr oNw3FDF2QDoQb0 lines-50m.txt 8 → 0
+http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 1: python3.8 py3-mmap-all-find.py oNw3FDF2QDoQb0 lines-50m.txt → 0
+http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 2: python3.8 py3-mmap-all-find.py oNw3FDF2QDoQb0 lines-50m.txt → 0
+http://example.com/5010430//hMYPe65wFhq6c/QY94=	L7VOFCoNw3FDF2QDoQb0+Dd0MVvBFOnbzA0J8Q==
+RUN 3: python3.8 py3-mmap-all-find.py oNw3FDF2QDoQb0 lines-50m.txt → 0
+100000000 lines-100m.txt
+RUN 1: wc -l lines-100m.txt → 0
+http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+RUN 1: grep 0X9ctk2AHVHk8u lines-100m.txt → 0
+http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+RUN 2: grep 0X9ctk2AHVHk8u lines-100m.txt → 0
+http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+RUN 1: ./c1-line-strstr 0X9ctk2AHVHk8u lines-100m.txt → 0
+http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+RUN 2: ./c1-line-strstr 0X9ctk2AHVHk8u lines-100m.txt → 0
+http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+RUN 1: ./c4-all-strstr 0X9ctk2AHVHk8u lines-100m.txt → 0
+http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+RUN 2: ./c4-all-strstr 0X9ctk2AHVHk8u lines-100m.txt → 0
+[worker 7F4DFE0ED700] http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+RUN 1: ./c5-threaded-strstr 0X9ctk2AHVHk8u lines-100m.txt 2 → 0
+[worker 7FE319E1C700] http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+RUN 2: ./c5-threaded-strstr 0X9ctk2AHVHk8u lines-100m.txt 2 → 0
+[worker 7F0EB89AF700] http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+RUN 1: ./c5-threaded-strstr 0X9ctk2AHVHk8u lines-100m.txt 4 → 0
+[worker 7F0491B3A700] http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+RUN 2: ./c5-threaded-strstr 0X9ctk2AHVHk8u lines-100m.txt 4 → 0
+[worker 7FB904163700] http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+RUN 1: ./c5-threaded-strstr 0X9ctk2AHVHk8u lines-100m.txt 8 → 0
+[worker 7F7E521E4700] http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+RUN 2: ./c5-threaded-strstr 0X9ctk2AHVHk8u lines-100m.txt 8 → 0
+http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+RUN 1: python3.8 py3-mmap-all-find.py 0X9ctk2AHVHk8u lines-100m.txt → 0
+http://example.com/45573539/0ae2qIWIN/Q5jTjJuUuSDlgMt43X	hYbdXz5b0X9ctk2AHVHk8uNsMUGlTHF+EtP0wg==
+RUN 2: python3.8 py3-mmap-all-find.py 0X9ctk2AHVHk8u lines-100m.txt → 0

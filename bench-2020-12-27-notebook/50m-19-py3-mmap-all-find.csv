@@ -1,0 +1,4 @@
+wall clock sec, cpu user sec, cpu system sec, percentage of cpu, major page faults, minor page faults, max resident kb, involuntarily context switches, voluntarily context switches
+10.29, 10.00, 0.28, 99%, 0, 118276, 7514492, 32, 1
+9.98, 9.71, 0.27, 99%, 0, 118275, 7514508, 27, 1
+10.10, 9.82, 0.27, 99%, 0, 118275, 7514304, 36, 1
