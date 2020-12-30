@@ -5,4 +5,4 @@ all: $(ALL)
 c5-threaded-strstr: CFLAGS += -pthread
 
 clean:
-	rm -f $(ALL)
+	rm -f $(ALL) *.svg

@@ -1,0 +1,6 @@
+./bench.sh: line 44: rustc: command not found
+benchmark,                         wall time sec, MiByte/s, mlines/s
+10m-30-warmup,                             0.340,     4288,    29.41
+10m-31-ripgrep,                            0.444,     3283,    22.52
+10m-32-silversearcher,                     1.328,     1097,     7.53
+10m-33-ack,                                2.545,      572,     3.93

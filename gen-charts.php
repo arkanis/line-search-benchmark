@@ -267,7 +267,7 @@ file_put_contents('10m.svg', svg_chart([
 file_put_contents('io-limit.svg', svg_chart([
 	['name' => 'Search speed in MiBytes per second', 'unit' => 'MiByte/s', 'to' => 20000, 'style' => 'fill: #3366cc', 'label_style' => ''],
 ], [
-#	[ /* 100m-00-warmup             */ "wc -l",                         /* 140.790, */     104,  /*   0.71 */],
+//	[ /* 100m-00-warmup             */ "wc -l",                         /* 140.790, */     104,  /*   0.71 */],
 	[ /* 100m-01-grep-short         */ "grep",                          /* 140.545, */     104,  /*   0.71 */],
 	[ /* 100m-08-c1-line-strstr     */ "C\nstrstr by line",             /* 140.160, */     104,  /*   0.71 */],
 	[ /* 100m-11-c4-all-strstr      */ "C\nstrstr on mmap\n1st run",    /* 140.34,  */     104,              ],
@@ -280,6 +280,26 @@ file_put_contents('io-limit.svg', svg_chart([
 	'chart' => [
 		'horizontal_padding' => 30,
 		'grid_lines' => 10
+	],
+	'legend' => [
+		'top_margin' => 30,
+	]
+]));
+
+
+
+file_put_contents('ripgrep-ag-ack.svg', svg_chart([
+	['name' => 'Search speed in MiBytes per second', 'unit' => 'MiByte/s', 'to' => 4000, 'style' => 'fill: #3366cc', 'label_style' => ''],
+], [
+	[ /*10m-01-*/ "grep",                              /* 0.631, */    2310,   /* 15.85 */],
+//	[ /*10m-30-*/ "warmup",                            /* 0.340, */    4288,   /* 29.41 */],
+	[ /*10m-31-*/ "ripgrep",                           /* 0.444, */    3283,   /* 22.52 */],
+	[ /*10m-32-*/ "Silver Searcher",                   /* 1.328, */    1097,   /*  7.53 */],
+	[ /*10m-33-*/ "ack",                               /* 2.545, */     572,   /*  3.93 */],
+], [
+	'chart' => [
+		'horizontal_padding' => 30,
+		'grid_lines' => 4
 	],
 	'legend' => [
 		'top_margin' => 30,

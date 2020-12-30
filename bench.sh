@@ -33,6 +33,9 @@ gcc --version
 php --version
 python3.8 --version
 ruby --version
+rg --version
+ag --version
+ack --version
 
 echo -e "\nCompiling c programs:\n"
 make all
@@ -195,3 +198,29 @@ bench_cmd 2 './c5-threaded-strstr 0X9ctk2AHVHk8u lines-100m.txt 2'              
 bench_cmd 2 './c5-threaded-strstr 0X9ctk2AHVHk8u lines-100m.txt 4'                                                100m-13-c5-4threads-strstr.csv       $lines_size $lines_count
 bench_cmd 2 './c5-threaded-strstr 0X9ctk2AHVHk8u lines-100m.txt 8'                                                100m-14-c5-8threads-strstr.csv       $lines_size $lines_count
 bench_cmd 2 'python3.8 py3-mmap-all-find.py 0X9ctk2AHVHk8u lines-100m.txt'                                        100m-19-py3-mmap-all-find.csv        $lines_size $lines_count
+
+
+#
+# Another 10m benchmark for ripgrep, silver searcher and ack (requested by Marc Seeger)
+#
+if test ! -f lines-10m.txt; then
+	echo "Generating lines-10m.txt..."
+	ruby gen-lines.rb 10_000_000 > lines-10m.txt
+	# sample lines:
+	# http://example.com/3073701/Ybyld6r9vNai95TYXiQH4FuQV+l/CHMwP4i3jQ==	qO76BFQLlj2g
+	# http://example.com/3503259/V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEKAE	j/tkgNV2c+ACibA3tpPgELnHPYT+3O32QLxFiAFdoGUl9xD9hl/0gCMprpGmMJqKFdU7Y0lkgriled853IQ+2Q1Ub3hMA4n8xpS9c+TLNg==
+	# http://example.com/3874850/zjQdPR3iPXe/f28d0x6D2fQONt8x	j5gSmB0dQhRpZ5yjnMBU9la1Dl00wzcD2C7J
+	# http://example.com/4097761/2bKX3FQY+hnG	0k3j5evTu+FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c+3jBoZCuL9k+tvrm178dppX5r7xSyDrAtjWHbtM2DBr1j8C13yYudNbTTEu7LJntONc+SY2Vs2WXBige8yAYRq
+	# http://example.com/4659995/zLtSsvjmP6o6vYwQQm0VRTtgxM0xUbY=	QvzHvFPq7/VrKDJbjoQ9xnzgUUEHP2F/RW2WbIOfnq0wgS5xNCCwF4w=
+	# http://example.com/9674460/OGuKOpNt22+aPUfoW3XTBDOfh/q/lc8ysJpil+M=	WURbI/R069glGkYLjfOizaobX5gJRUjF71pe
+	# short:  VrKDJbjoQ9xnzg  → 4659995
+	# medium: V6TGqGjjnmhlHRcYEq1IJCgzUNSx09bCkwJnEK  → 3503259
+	# long:   FMzaoLmVeEoJ3PAPERDFSO2RFEo5/mO17YTQrXz4jr0Ud9w0854q6/rcRu11AocX3vzl4q7O0f6c  → 4097761
+fi
+lines_size=$(stat --printf="%s" lines-10m.txt)
+lines_count=10_000_000
+
+bench_cmd 1  'wc -l lines-10m.txt'                                                                                10m-30-warmup.csv                   $lines_size $lines_count
+bench_cmd 10 'rg VrKDJbjoQ9xnzg lines-10m.txt'                                                                    10m-31-ripgrep.csv                  $lines_size $lines_count
+bench_cmd 10 'ag VrKDJbjoQ9xnzg lines-10m.txt'                                                                    10m-32-silversearcher.csv           $lines_size $lines_count
+bench_cmd 10 'ack VrKDJbjoQ9xnzg lines-10m.txt'                                                                   10m-33-ack.csv                      $lines_size $lines_count
